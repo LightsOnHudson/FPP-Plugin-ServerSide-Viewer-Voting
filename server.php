@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
-error_reporting(0);
+//error_reporting(0);
 //added Dec 3 2015
-ob_implicit_flush();
+//ob_implicit_flush();
 
 include 'php_serial.class.php';
 include_once('projectorCommands.inc');
