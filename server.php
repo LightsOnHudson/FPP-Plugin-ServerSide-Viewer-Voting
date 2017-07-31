@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 //error_reporting(0);
 //added Dec 3 2015
@@ -60,7 +59,7 @@ if(!empty($_POST)) {
 } elseif(!empty($_GET)) {
 	if($DEBUG) {
 		foreach($_GET as $key => $value) {
-			logEntry( "POST parameter '$key' has '$value'");
+			logEntry( "GET parameter '$key' has '$value'");
 		}
 	}
 }
