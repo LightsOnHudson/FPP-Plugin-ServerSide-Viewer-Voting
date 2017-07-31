@@ -74,12 +74,10 @@ if(!empty($_POST)) {
 //sleep(2);
 logEntry("Client token: ".$CLIENT_TOKEN);
 
-echo "<html> \n";
-echo "<body> \n";
-//$CLIENT_TOKEN = "1234567780";
-echo "CLIENT TOKEN: ".$CLIENT_TOKEN;
+$CLIENT_RESPONSE_ARRAY = array("CLIENT_TOKEN => ".$CLIENT_TOKEN);
 
-echo "</body> \n";
-echo "</html> \n";
+$JSON_RESPONSE = json_encode($CLIENT_RESPONSE_ARRAY);
+
+echo $JSON_RESPONSE;
 
 ?>
