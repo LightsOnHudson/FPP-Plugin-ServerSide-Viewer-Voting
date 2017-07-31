@@ -69,8 +69,11 @@ if(!empty($_POST)) {
 		}
 	}
 }
-
+echo "<html> \n";
+echo "<body> \n";
 echo "CLIENT TOKEN: ".$CLIENT_TOKEN;
 
+echo "</body> \n";
+echo "</html> \n";
 
 ?>
