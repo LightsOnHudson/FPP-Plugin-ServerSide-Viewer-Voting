@@ -71,6 +71,7 @@ if(!empty($_POST)) {
 }
 echo "<html> \n";
 echo "<body> \n";
+$CLIENT_TOKEN = "1234567780";
 echo "CLIENT TOKEN: ".$CLIENT_TOKEN;
 
 echo "</body> \n";
