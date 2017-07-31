@@ -37,10 +37,19 @@ logEntry("DEBUG: ".$DEBUG);
 
 //$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);
 $ENABLED = urldecode($pluginSettings['ENABLED']);
+
+
 if($DEBUG) {
 	logEntry("PORT: ".$PORT);
 	logEntry("ENabled: ".$ENABLED);
 	
 }
+
+if(!$ENABLED) {
+	logEntry("Not enabled exiting");
+	exit(0);	
+}
+
+
 
 ?>
