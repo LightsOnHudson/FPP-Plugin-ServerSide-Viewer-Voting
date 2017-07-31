@@ -31,7 +31,16 @@ $myPid = getmypid();
 
 //$PORT = ReadSettingFromFile("PORT",$pluginName);
 $PORT = $pluginSettings['PORT'];
+$DEBUG = $pluginSettings['DEBUG'];
+logEntry("DEBUG: ".$DEBUG);
+
 
 //$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);
 $ENABLED = urldecode($pluginSettings['ENABLED']);
+if($DEBUG) {
+	logEntry("PORT: ".$PORT);
+	logEntry("ENabled: ".$ENABLED);
+	
+}
+
 ?>
