@@ -50,9 +50,18 @@ if(!$ENABLED) {
 	exit(0);	
 }
 
-if($DEBUG) {
-	foreach($_POST as $key => $value) {
-		logEntry( "POST parameter '$key' has '$value'");
+
+if(!empty($_POST)) {
+	if($DEBUG) {
+		foreach($_POST as $key => $value) {
+			logEntry( "POST parameter '$key' has '$value'");
+		}
+	}
+} elseif(!empty($_GET)) {
+	if($DEBUG) {
+		foreach($_GET as $key => $value) {
+			logEntry( "POST parameter '$key' has '$value'");
+		}
 	}
 }
 
