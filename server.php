@@ -54,15 +54,23 @@ if(!empty($_POST)) {
 	if($DEBUG) {
 		foreach($_POST as $key => $value) {
 			logEntry( "POST parameter '$key' has '$value'");
+			if(!empty($_POST['API_TOKEN'])) {
+				$CLIENT_TOKEN = $_POST['API_TOKEN'];
+			}
 		}
 	}
 } elseif(!empty($_GET)) {
 	if($DEBUG) {
 		foreach($_GET as $key => $value) {
 			logEntry( "GET parameter '$key' has '$value'");
+			if(!empty($_GET['API_TOKEN'])) {
+				$CLIENT_TOKEN = $_GET['API_TOKEN'];
+			}
 		}
 	}
 }
+
+echo "CLIENT TOKEN: ".$CLIENT_TOKEN;
 
 
 ?>
