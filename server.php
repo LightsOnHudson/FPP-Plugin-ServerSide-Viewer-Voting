@@ -81,7 +81,7 @@ $JSON_RESPONSE = json_encode($CLIENT_RESPONSE_ARRAY,JSON_PRETTY_PRINT);
 $json = array();
 $itemObject = new stdClass();
 $itemObject->CLIENT_TOKEN = $CLIENT_TOKEN;
-$itemObject->port = 2016;
+$itemObject->VOTES = 2016;
 
 array_push($json, $itemObject);
 $json = json_encode($json, JSON_PRETTY_PRINT);
