@@ -74,7 +74,7 @@ if(!empty($_POST)) {
 //sleep(2);
 logEntry("Client token: ".$CLIENT_TOKEN);
 
-$CLIENT_RESPONSE_ARRAY = array_values(array("CLIENT_TOKEN => ".$CLIENT_TOKEN));
+$CLIENT_RESPONSE_ARRAY = array("CLIENT_TOKEN => ".$CLIENT_TOKEN);
 
 $JSON_RESPONSE = json_encode($CLIENT_RESPONSE_ARRAY,JSON_PRETTY_PRINT);
 
