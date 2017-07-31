@@ -78,6 +78,14 @@ $CLIENT_RESPONSE_ARRAY = array("CLIENT_TOKEN => ".$CLIENT_TOKEN);
 
 $JSON_RESPONSE = json_encode($CLIENT_RESPONSE_ARRAY,JSON_PRETTY_PRINT);
 
-echo $JSON_RESPONSE;
+$json = array();
+$itemObject = new stdClass();
+$itemObject->CLIENT_TOKEN = $CLIENT_TOKEN;
+$itemObject->port = 2016;
+
+array_push($json, $itemObject);
+$json = json_encode($json, JSON_PRETTY_PRINT);
+echo $json;
+
 
 ?>
