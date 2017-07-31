@@ -56,6 +56,7 @@ if(!empty($_POST)) {
 			logEntry( "POST parameter '$key' has '$value'");
 			if(!empty($_POST['API_TOKEN'])) {
 				$CLIENT_TOKEN = $_POST['API_TOKEN'];
+				break;
 			}
 		}
 	}
@@ -65,11 +66,12 @@ if(!empty($_POST)) {
 			logEntry( "GET parameter '$key' has '$value'");
 			if(!empty($_GET['API_TOKEN'])) {
 				$CLIENT_TOKEN = $_GET['API_TOKEN'];
+				break;
 			}
 		}
 	}
 }
-sleep(2);
+//sleep(2);
 logEntry("Client token: ".$CLIENT_TOKEN);
 
 echo "<html> \n";
