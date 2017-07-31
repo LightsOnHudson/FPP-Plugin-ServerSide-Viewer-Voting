@@ -50,6 +50,11 @@ if(!$ENABLED) {
 	exit(0);	
 }
 
+if($DEBUG) {
+	foreach($_POST as $key => $value) {
+		logEntry( "POST parameter '$key' has '$value'");
+	}
+}
 
 
 ?>
