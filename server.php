@@ -74,9 +74,8 @@ if(!empty($_POST)) {
 //sleep(2);
 logEntry("Client token: ".$CLIENT_TOKEN);
 
-$CLIENT_RESPONSE_ARRAY = array("CLIENT_TOKEN => ".$CLIENT_TOKEN);
+//// put whatever response in the array below to respond back using HTML. Then the client will decode it!
 
-$JSON_RESPONSE = json_encode($CLIENT_RESPONSE_ARRAY,JSON_PRETTY_PRINT);
 
 $json = array();
 $itemObject = new stdClass();
