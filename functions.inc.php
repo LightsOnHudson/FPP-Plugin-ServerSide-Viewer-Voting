@@ -1,5 +1,34 @@
 <?php
 
+//get a list of enabled sites
+//TODO: get by GEO location?? or zipcode range?
+function getSites($conn) {
+	//This returns that
+	
+	global $DEBUG;
+	
+	$SITES = array();
+	$SITES = null;
+	
+	$loginQuery = "SELECT * FROM sites";
+	$result = $conn->query($loginQuery);
+	
+	if(is_array($result) && !empty($result)) 
+		while($row = $result->fetch_assoc()) {
+			$SITES[] = $row[];
+		}
+		
+		
+	if($DEBUG) {
+		echo "SITES DEBUG <br/> \n <pre>";
+		print_r($SITES);
+		echo "</pre> \n";
+	}
+	
+	return $SITES;
+}
+
+
 //create DB connection /return the connection
 function dbConnect($servername, $username, $password, $dbname) {
 	
