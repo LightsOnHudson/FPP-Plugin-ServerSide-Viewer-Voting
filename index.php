@@ -44,8 +44,11 @@ if (!$conn)
 	
 }
 
+if($DEBUG) {
+	print_r($_POST);
+}
 
-if(isset($_POST)) {
+if(!empty($_POST)) {
 	
 	if(isset($_POST['SUBMIT_SITE_SELECT'])) {
 		echo "Submitted site id: ".$POST['SITE_ID'];
