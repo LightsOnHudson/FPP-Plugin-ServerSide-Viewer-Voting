@@ -28,23 +28,36 @@ $DEBUG = $pluginSettings['DEBUG'];
 logEntry("DEBUG: ".$DEBUG);
 
 
-$con = mysql_connect($DB_SERVER_IP,$DB_USER,$DB_PASS);
-if (!$con)
+
+
+$conn = dbConnect($DB_SERVER_IP, $DB_USER, $DB_PASS, $db);
+if (!$conn)
 {
 	logEntry("Could not connect: " . mysql_error());
+	
+	//EXIT here because could not connect to database!
+	exit(0);
 } else {
 	if($DEBUG) {
 		logEntry("Connected to database: ".$db);
 	}
+	
 }
+$loginQuery = "SELECT * FROM users '";
+$result = $conn->query($loginQuery);
 
 
+	while($row = $result->fetch_assoc()) {
+		
+		echo "user id: ".$row['user_ID'];
+		echo "<br/> \n";
+		echo "first_name: ".urldecode($row['first_name']);
+		echo "<br/> \n";
+		echo "last_name: ".urldecode($row['last_name']);
+		
+	}
 
-mysql_select_db($db, $con);
-
-
-
-
+$conn-close();
 
 
 ?>
