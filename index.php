@@ -76,12 +76,12 @@ if(!empty($_POST)) {
 			
 			$SEQUENCES = getSequences($conn, $SHOW_ID);
 			
-			echo "<form name=\"selectSequence\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+			echo "<form name=\"sequenceVote\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 			
 			printSequenceVoteForm($conn, $SEQUENCES);
 			
-			printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
-			echo "<input type=\"submit\" name=\"SUBMIT_SEQUENCE_VOTE\" value=\"VOTE\"> \n";
+		//	printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
+			
 			echo "</form> \n";
 		
 	}

@@ -27,6 +27,8 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 		echo "</tr> \n";
 	//	echo "<option value=\"".$data_arr[$index_ID_name]."\">".$data_arr['name']." - ".$data_arr['description']."</option> \n";
 		//print_r($data_arr);
+		
+		//echo "<input type=\"submit\" name=\"SUBMIT_SEQUENCE_VOTE\" value=\"VOTE\"> \n";
 	}
 	
 	
