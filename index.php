@@ -136,7 +136,7 @@ echo "<form name=\"selectSite\" action=\"".$SERVER['PHP_SELF']."\" method=\"post
 $SITES = getSites($conn);
 
 //print select from array
-printFormSelectFromArray($conn, "SITE_ID", $SITES, "site_ID", true);
+printFormSelectFromArray($conn, "SITE_ID", $SITES, "site_ID",null, true);
 
 echo "<input type=\"submit\" name=\"SUBMIT_SITE_SELECT\" value=\"Select Site\"> \n";
 echo "</form> \n";
