@@ -93,6 +93,9 @@ if(!empty($_POST)) {
 			logEntry("We got a VOTE DOWN for sequence: ".$VOTE_SEQUENCE);
 		}
 		
+		//write the vote to the votes table for value 0 for DOWN
+		submitVote($conn, $VOTE_SEQUENCE, 0);
+		
 	} elseif(isset($_POST['vote_up'])){
 		
 		
@@ -104,7 +107,8 @@ if(!empty($_POST)) {
 			logEntry("We got a VOTE UP for sequence: ".$VOTE_SEQUENCE);
 		}
 	}
-	
+		//write the vote to the votes table for value 0 for DOWN
+		submitVote($conn, $VOTE_SEQUENCE, 1);
 	
 	//exit here since the user is inquiring about a site
 	$conn->close();

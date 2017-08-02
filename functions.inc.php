@@ -1,5 +1,29 @@
 <?php
 
+
+function submitVote($conn, $VOTE_SEQUENCE, $voteValue) {
+	
+	global $DEBUG;
+	
+	$timestamp = time();
+	
+	$sqlInsertVote = "INSERT into votes (timestamp, sequence_ID, vote_value) VALUES (".$timestamp.",".$VOTE_SEQUENCE.",".$voteValue.")";
+	
+	if($DEBUG)
+		echo $sqlInsertVote."<br/> \n";
+		
+		$result = $conn->query($sqlInsertVote);
+		
+		if($result) {
+			
+			logEntry("Entered vote for sequence: ".$VOTE_SEQUENCE. " value: ".$voteValue);
+		} else {
+			
+			logEntry("COULD NOT ENTER vote for sequence: ".$VOTE_SEQUENCE. " value: ".$voteValue);
+		}
+		
+	
+}
 //print the sequence vote form
 function printSequenceVoteForm($conn, $SEQUENCES) {
 	
