@@ -1,5 +1,19 @@
 <?php
 
+//print a select option of the array passed with the selected item as optional??
+function printFormSelectFromArray($conn, $select_name, $data_array, $selected_item) {
+	
+	echo "<select name=\"".$select_name."\"> \n";
+	
+	foreach ($data_array as $data_arr) {
+		print_r($data_arr);
+	}
+	echo "</select> \n";
+	
+	
+}
+
+
 //get a list of enabled sites
 //TODO: get by GEO location?? or zipcode range?
 function getSites($conn) {

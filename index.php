@@ -46,8 +46,10 @@ if (!$conn)
 
 echo "<form name=\"selectSite\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 
-echo getSites($conn);
+$SITES = getSites($conn);
 
+//print select from array
+printFormSelectFromArray($conn, "SITE", $SITES, null);
 
 echo "<input type=\"submit\" name=\"SUBMIT_SITE_SELECT\" value=\"Select Site\"> \n";
 echo "</form> \n";
