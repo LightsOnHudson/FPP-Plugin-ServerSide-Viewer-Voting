@@ -84,6 +84,25 @@ if(!empty($_POST)) {
 			
 			echo "</form> \n";
 		
+	} elseif(isset($_POST['vote_down'])) {
+		
+		//the sequence ID is in the vote_down variable
+		$VOTE_SEQUENCE = $_POST['vote_down'];
+		
+		if($DEBUG) {
+			logEntry("We got a VOTE DOWN for sequence: ".$VOTE_SEQUENCE);
+		}
+		
+	} elseif(isset($_POST['vote_up'])){
+		
+		
+		
+		//the sequence ID is in the vote_up variable
+		$VOTE_SEQUENCE = $_POST['vote_up'];
+		
+		if($DEBUG) {
+			logEntry("We got a VOTE UP for sequence: ".$VOTE_SEQUENCE);
+		}
 	}
 	
 	
