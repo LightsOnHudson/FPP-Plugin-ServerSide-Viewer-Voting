@@ -18,10 +18,10 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 		
 		
 		echo "<td> \n";
-		echo "<input type=\"image\"  height=\"32\" width=\"32\" src=\"".$VOTE_ARROW_UP."\" alt=\"Vote Up\"> \n";
+		echo "<input type=\"image\" name=\"vote_up\" value=\"".$seq['sequence_ID']."\" height=\"32\" width=\"32\" src=\"".$VOTE_ARROW_UP."\" alt=\"Vote Up\"> \n";
 		echo "</td> \n";
 		echo "<td> \n";
-		echo "<input type=\"image\"  height=\"32\" width=\"32\" src=\"".$VOTE_ARROW_DOWN."\" alt=\"Vote Down\"> \n";
+		echo "<input type=\"image\"  name=\"vote_down\" value=\"".$seq['sequence_ID']."\" height=\"32\" width=\"32\" src=\"".$VOTE_ARROW_DOWN."\" alt=\"Vote Down\"> \n";
 		echo "</td> \n";
 		
 		echo "</tr> \n";
