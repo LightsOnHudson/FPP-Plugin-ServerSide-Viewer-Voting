@@ -1,12 +1,12 @@
 <?php
 
 //print a select option of the array passed with the selected item as optional??
-function printFormSelectFromArray($conn, $select_name, $data_array, $selected_item=null) {
+function printFormSelectFromArray($conn, $select_name, $data_array, $index_ID_name, $selected_item=null) {
 	
 	echo "<select name=\"".$select_name."\"> \n";
 	
 	foreach ($data_array as $data_arr) {
-		echo "<option value=\"".$data_arr['site_ID']."\">".$data_arr['name']." - ".$data_arr['description']."</option> \n";
+		echo "<option value=\"".$data_arr[$index_ID_name]."\">".$data_arr['name']." - ".$data_arr['description']."</option> \n";
 		//print_r($data_arr);
 	}
 	echo "</select> \n";

@@ -58,7 +58,7 @@ if(!empty($_POST)) {
 		
 			//show the available shows and then exit
 			
-			$SHOWS = getShows($conn, $SITE_ID);
+			$SHOWS = getShows($conn, $SITE_ID, 0, "site_ID");
 			
 			echo "<form name=\"selectShow\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 			printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, null);
@@ -73,7 +73,7 @@ if(!empty($_POST)) {
 			
 			//show the available shows and then exit
 			
-			$SEQUENCES = getSequences($conn, $SHOW_ID);
+			$SEQUENCES = getSequences($conn, $SHOW_ID,0,"show_ID");
 			
 			echo "<form name=\"selectSequence\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 			printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, null);
