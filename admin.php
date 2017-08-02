@@ -7,7 +7,7 @@
 $pluginName  = "FPPViewerVotingServer";
 
 include_once 'functions.inc.php';
-
+include_once 'config/userValues.inc';
 
 $logFile = "/tmp". "/".$pluginName.".log";
 
