@@ -58,10 +58,10 @@ if(!empty($_POST)) {
 		
 			//show the available shows and then exit
 			
-			$SHOWS = getShows($conn, $SITE_ID, null, "site_ID");
+			$SHOWS = getShows($conn, $SITE_ID);
 			
 			echo "<form name=\"selectShow\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
-			printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, null);
+			printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, "show_ID",null);
 			echo "<input type=\"submit\" name=\"SUBMIT_SHOW_SELECT\" value=\"Select Show\"> \n";
 			echo "</form> \n";
 	} elseif(isset($_POST['SUBMIT_SHOW_SELECT'])) {
@@ -73,10 +73,10 @@ if(!empty($_POST)) {
 			
 			//show the available shows and then exit
 			
-			$SEQUENCES = getSequences($conn, $SHOW_ID, null,"show_ID");
+			$SEQUENCES = getSequences($conn, $SHOW_ID);
 			
 			echo "<form name=\"selectSequence\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
-			printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, null);
+			printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
 			echo "<input type=\"submit\" name=\"SUBMIT_SEQUENCE_VOTE\" value=\"VOTE\"> \n";
 			echo "</form> \n";
 		
@@ -100,7 +100,7 @@ echo "<form name=\"selectSite\" action=\"".$SERVER['PHP_SELF']."\" method=\"post
 $SITES = getSites($conn);
 
 //print select from array
-printFormSelectFromArray($conn, "SITE_ID", $SITES, null, "site_ID");
+printFormSelectFromArray($conn, "SITE_ID", $SITES, "site_ID");
 
 echo "<input type=\"submit\" name=\"SUBMIT_SITE_SELECT\" value=\"Select Site\"> \n";
 echo "</form> \n";
