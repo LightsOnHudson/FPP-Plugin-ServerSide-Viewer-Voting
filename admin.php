@@ -43,7 +43,7 @@ if (!$conn)
 	}
 	
 }
-$loginQuery = "SELECT * FROM users '";
+$loginQuery = "SELECT * FROM users";
 $result = $conn->query($loginQuery);
 
 
