@@ -8,14 +8,14 @@ function getSites($conn) {
 	global $DEBUG;
 	
 	$SITES = array();
-	$SITES = null;
+	//$SITES = null;
 	
-	$loginQuery = "SELECT * FROM sites";
-	$result = $conn->query($loginQuery);
+	$siteQuery = "SELECT * FROM sites";
+	$result = $conn->query($siteQuery);
 	
-	if(is_array($result) && !empty($result)) 
+	if(!empty($result)) 
 		while($row = $result->fetch_assoc()) {
-			$SITES = $row[];
+			$SITES[] = $row;
 		}
 		
 		
