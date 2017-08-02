@@ -1,5 +1,39 @@
 <?php
 
+//print the sequence vote form
+function printSequenceVoteForm($conn, $SEQUENCES) {
+	
+	global $DEBUG, $VOTE_ARROW_UP, $VOTE_ARROW_DOWN;
+	
+	
+	echo "<table border=\"1\" cellspacing=\"1\" cellpadding=\"1\"> \n";
+	
+	foreach ($SEQUENCES as $seq) {
+		
+		echo "<tr> \n";
+		
+		echo "<td> \n";
+		echo $seq['name'];
+		echo "</td> \n";
+		
+		
+		echo "<td> \n";
+		echo "<img height=\"32\" width=\"32\" src=\"".$VOTE_ARROW_UP."\"> \n";
+		echo "</td> \n";
+		echo "<td> \n";
+		echo "<img height=\"32\" width=\"32\" src=\"".$VOTE_ARROW_DOWN."\"> \n";
+		echo "</td> \n";
+		
+		echo "</tr> \n";
+	//	echo "<option value=\"".$data_arr[$index_ID_name]."\">".$data_arr['name']." - ".$data_arr['description']."</option> \n";
+		//print_r($data_arr);
+	}
+	
+	
+	echo "</table> \n";
+	
+	
+}
 //print a select option of the array passed with the selected item as optional??
 function printFormSelectFromArray($conn, $select_name, $data_array, $index_ID_name, $selected_item=null) {
 	

@@ -3,7 +3,8 @@
 //added Dec 3 2015
 //ob_implicit_flush();
 
-
+$VOTE_ARROW_UP = "images/up-arrow-icon.jpg";
+$VOTE_ARROW_DOWN = "images/down-arrow-icon.jpg";
 $pluginName  = "FPPViewerVotingServer";
 
 include_once 'functions.inc.php';
@@ -76,6 +77,9 @@ if(!empty($_POST)) {
 			$SEQUENCES = getSequences($conn, $SHOW_ID);
 			
 			echo "<form name=\"selectSequence\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+			
+			printSequenceVoteForm($conn, $SEQUENCES);
+			
 			printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
 			echo "<input type=\"submit\" name=\"SUBMIT_SEQUENCE_VOTE\" value=\"VOTE\"> \n";
 			echo "</form> \n";
