@@ -51,9 +51,29 @@ if($DEBUG) {
 if(!empty($_POST)) {
 	
 	if(isset($_POST['SUBMIT_SITE_SELECT'])) {
-		echo "Submitted site id: ".$_POST['SITE_ID'];
+		if(is_numeric($_POST['SITE_ID'] ))
+			$SITE_ID = $_POST['SITE_ID'];
+		
+			echo "Submitted site id: ".$SITE_ID;
+		
+		//show the available shows and then exit
+		
+		$SHOWS = getShows($conn, $SITE_ID);
+		printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, null);
+		
 	}
+	
+	
+	//exit here since the user is inquiring about a site
+	$conn->close();
+	exit(0);
 }
+
+
+
+
+
+///only show the below if there is no SITE ID in the POST
 
 
 echo "<form name=\"selectSite\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";

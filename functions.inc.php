@@ -1,7 +1,7 @@
 <?php
 
 //print a select option of the array passed with the selected item as optional??
-function printFormSelectFromArray($conn, $select_name, $data_array, $selected_item) {
+function printFormSelectFromArray($conn, $select_name, $data_array, $selected_item=null) {
 	
 	echo "<select name=\"".$select_name."\"> \n";
 	
@@ -14,7 +14,31 @@ function printFormSelectFromArray($conn, $select_name, $data_array, $selected_it
 	
 }
 
-
+function getShows($conn, $site_ID) {
+	//This returns that
+	
+	global $DEBUG;
+	
+	$SHOWS = array();
+	//$SITES = null;
+	
+	$siteQuery = "SELECT * FROM shows WHERE site_ID = ".$site_ID;
+	$result = $conn->query($siteQuery);
+	
+	if(!empty($result))
+		while($row = $result->fetch_assoc()) {
+			$SHOWS[] = $row;
+		}
+	
+	
+	if($DEBUG) {
+		echo "SHOWS DEBUG <br/> \n <pre>";
+		print_r($SHOWS);
+		echo "</pre> \n";
+	}
+	
+	return $SHOWS;
+}
 //get a list of enabled sites
 //TODO: get by GEO location?? or zipcode range?
 function getSites($conn) {
