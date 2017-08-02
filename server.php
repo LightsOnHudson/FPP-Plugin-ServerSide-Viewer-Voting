@@ -97,12 +97,19 @@ $SITE_ID = getSiteIDFromAPIToken($conn, $CLIENT_TOKEN);
 
 if(count($SITE_ID) <=0 || count($SITE_ID) == null) {
 	logEntry("No active Site id found for token: ".$CLIENT_TOKEN);
+	
+	$SITE_ENABLED = false;
 }
 
 $json = array();
 $itemObject = new stdClass();
 $itemObject->CLIENT_TOKEN = $CLIENT_TOKEN;
-$itemObject->VOTES = 2016;
+$itemObject->SITE_ENABLED = $SITE_ENABLED;
+$itemObject->SEQUENCE = $SEQUENCE;
+$itemObject->VOTES = $VOTES;
+$itemObject->LAST_VOTE_TIMESTAMP= $LAST_VOTE_TIMESTAMP;
+
+
 
 array_push($json, $itemObject);
 $json = json_encode($json, JSON_PRETTY_PRINT);
