@@ -65,6 +65,10 @@ if(!empty($_POST)) {
 			printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, "show_ID",null);
 			echo "<input type=\"submit\" name=\"SUBMIT_SHOW_SELECT\" value=\"Select Show\"> \n";
 			echo "</form> \n";
+			
+			$conn->close();
+			exit(0);
+			
 	} elseif(isset($_POST['SUBMIT_SHOW_SELECT'])) {
 		
 		if(is_numeric($_POST['SHOW_ID'] ))
@@ -83,6 +87,8 @@ if(!empty($_POST)) {
 		//	printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
 			
 			echo "</form> \n";
+			$conn->close();
+			exit(0);
 		
 	} elseif(isset($_POST['vote_down'])) {
 		
