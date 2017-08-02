@@ -13,11 +13,13 @@ include_once '/opt/fpp/www/common.php';
 $pluginName  = "FPPViewerVotingServer";
 
 include_once 'functions.inc.php';
-include_once 'commonFunctions.inc.php';
+
+
+include_once 'config/userValues.inc';
 
 $logFile = "/tmp". "/".$pluginName.".log";
 
-
+$SITE_ENABLED_STATUS = 1;
 
 $pluginConfigFile = (__DIR__)."/plugin." .$pluginName;
 logEntry("PluginConfig File: ".$pluginConfigFile);
@@ -74,9 +76,28 @@ if(!empty($_POST)) {
 //sleep(2);
 logEntry("Client token: ".$CLIENT_TOKEN);
 
+$conn = dbConnect($DB_SERVER_IP, $DB_USER, $DB_PASS, $db);
+if (!$conn)
+{
+	logEntry("Could not connect: " . mysql_error());
+	
+	//EXIT here because could not connect to database!
+	exit(0);
+} else {
+	if($DEBUG) {
+		logEntry("Connected to database: ".$db);
+	}
+	
+}
+
 //// put whatever response in the array below to respond back using HTML. Then the client will decode it!
 
 //check the votes for the API Token / site 
+$SITE_ID = getSiteIDFromAPIToken($conn, $CLIENT_TOKEN);
+
+if(count($SITE_ID) <=0 || count($SITE_ID) == null) {
+	logEntry("No active Site id found for token: ".$CLIENT_TOKEN);
+}
 
 $json = array();
 $itemObject = new stdClass();

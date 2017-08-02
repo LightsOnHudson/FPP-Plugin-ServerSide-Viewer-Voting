@@ -1,6 +1,34 @@
 <?php
 
 
+//get the votes for a client token
+function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
+	
+	global $DEBUG, $SITE_ENABLED_STATUS;
+	
+	$timestamp = time();
+	
+	$SITE_INFO = array();
+	//check that the site is ACTIVE value 1
+	
+	$siteQuery = "SELECT * FROM sites WHERE API_TOKEN = '".$CLIENT_TOKEN."' and status_ID=".$SITE_ENABLED_STATUS. " LIMIT 1";
+	$result = $conn->query($siteQuery);
+	
+	if(!empty($result))
+		while($row = $result->fetch_assoc()) {
+			$SITE_INFO[] = $row;
+		}
+	
+	
+	if($DEBUG) {
+		echo "SITE DEBUG <br/> \n <pre>";
+		print_r($SITE_INFO);
+		echo "</pre> \n";
+	}
+	
+	return $SITE_INFO;
+}
+
 function submitVote($conn, $VOTE_SEQUENCE, $voteValue) {
 	
 	global $DEBUG;
