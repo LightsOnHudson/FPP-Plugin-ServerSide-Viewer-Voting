@@ -101,6 +101,9 @@ if(!empty($_POST)) {
 		
 		//write the vote to the votes table for value 0 for DOWN
 		submitVote($conn, $VOTE_SEQUENCE, 0);
+		//exit here since the user is inquiring about a site
+		$conn->close();
+		exit(0);
 		
 	} elseif(isset($_POST['vote_up'])){
 		
@@ -115,10 +118,10 @@ if(!empty($_POST)) {
 	}
 		//write the vote to the votes table for value 0 for DOWN
 		submitVote($conn, $VOTE_SEQUENCE, 1);
+		//exit here since the user is inquiring about a site
+		$conn->close();
+		exit(0);
 	
-	//exit here since the user is inquiring about a site
-	$conn->close();
-	exit(0);
 }
 
 
