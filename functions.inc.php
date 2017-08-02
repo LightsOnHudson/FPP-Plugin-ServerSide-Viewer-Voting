@@ -1,5 +1,28 @@
 <?php
 
+//create DB connection /return the connection
+function dbConnect($servername, $username, $password, $dbname) {
+	
+	global $DEBUG, $TSMS_from, $MSG_MAINTENANCE;
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+		
+		logEntry("DATABASE CONNECTION ERROR");
+		//send a message to the user that something is wrong, or maintenance is running
+		sendTSMSMessage($MSG_MAINTENANCE,$TSMS_from);
+		
+		die("Connection failed: " . $conn->connect_error);
+		exit(0);
+		
+		
+		
+	}
+	
+	return $conn;
+}
+
 //create unique GUID:
 function getGUID(){
 	if (function_exists('com_create_guid')){
