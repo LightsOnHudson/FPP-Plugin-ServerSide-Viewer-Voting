@@ -57,7 +57,7 @@ $result = $conn->query($loginQuery);
 		
 	}
 
-$conn-close();
+$conn->close();
 
 
 ?>
