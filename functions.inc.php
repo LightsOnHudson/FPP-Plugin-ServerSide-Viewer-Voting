@@ -13,7 +13,7 @@ function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 	$SITE_INFO = array();
 	//check that the site is ACTIVE value 1
 	
-	$siteQuery = "SELECT * FROM sites WHERE API_TOKEN = '".$CLIENT_TOKEN."' and status_ID=".$SITE_ENABLED_STATUS. " LIMIT 1";
+	$siteQuery = "SELECT * FROM sites WHERE API_TOKEN = '".$CLIENT_TOKEN."' AND status_ID = ".$SITE_ENABLED_STATUS. " LIMIT 1";
 	
 	if($DEBUG) {
 		logEntry("getSite info sql: ".$siteQuery);
