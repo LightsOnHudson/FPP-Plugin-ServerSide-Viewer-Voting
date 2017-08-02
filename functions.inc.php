@@ -21,9 +21,8 @@ function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 	$result = $conn->query($siteQuery);
 	
 	if($result !== false) {
-		while($row = $result->fetch_assoc()) {
-			$SITE_INFO[] = $row;
-		}
+		$SITE_INFO= $result->fetch_assoc();
+			
 	
 	
 		if($DEBUG) {
