@@ -44,12 +44,21 @@ if (!$conn)
 	
 }
 
+
+if(isset($_POST)) {
+	
+	if(isset($_POST['SUBMIT_SITE_SELECT'])) {
+		echo "Submitted site id: ".$POST['SITE_ID'];
+	}
+}
+
+
 echo "<form name=\"selectSite\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 
 $SITES = getSites($conn);
 
 //print select from array
-printFormSelectFromArray($conn, "SITE", $SITES, null);
+printFormSelectFromArray($conn, "SITE_ID", $SITES, null);
 
 echo "<input type=\"submit\" name=\"SUBMIT_SITE_SELECT\" value=\"Select Site\"> \n";
 echo "</form> \n";
