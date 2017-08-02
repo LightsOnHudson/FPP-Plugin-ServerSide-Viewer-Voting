@@ -32,6 +32,10 @@ $con = mysql_connect($DB_SERVER_IP,$DB_USER,$DB_PASS);
 if (!$con)
 {
 	logEntry("Could not connect: " . mysql_error());
+} else {
+	if($DEBUG) {
+		logEntry("Connected to database: ".$db);
+	}
 }
 
 
