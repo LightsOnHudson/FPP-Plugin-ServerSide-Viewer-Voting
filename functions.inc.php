@@ -6,7 +6,8 @@ function printFormSelectFromArray($conn, $select_name, $data_array, $selected_it
 	echo "<select name=\"".$select_name."\"> \n";
 	
 	foreach ($data_array as $data_arr) {
-		print_r($data_arr);
+		echo "<option value=\"".$data_arr['site_ID']."\">".$data_arr['name']." - ".$data_arr['description']."</option> \n";
+		//print_r($data_arr);
 	}
 	echo "</select> \n";
 	
