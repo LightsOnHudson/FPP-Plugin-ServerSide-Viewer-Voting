@@ -15,7 +15,7 @@ function getSites($conn) {
 	
 	if(is_array($result) && !empty($result)) 
 		while($row = $result->fetch_assoc()) {
-			$SITES[] = $row[];
+			$SITES = $row[];
 		}
 		
 		
