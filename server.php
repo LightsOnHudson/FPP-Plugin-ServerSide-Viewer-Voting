@@ -95,10 +95,10 @@ if (!$conn)
 //check the votes for the API Token / site 
 $SITE_ID = getSiteIDFromAPIToken($conn, $CLIENT_TOKEN);
 
-if(count($SITE_ID) <=0 || count($SITE_ID) == null) {
-	logEntry("No active Site id found for token: ".$CLIENT_TOKEN);
-	
-	$SITE_ENABLED = false;
+if($SITE_ID != "" && $SITE_ID != 0 && $SITE_ID != null) {
+	$SITE_ENABLED_STATUS = true;
+} else {
+	$SITE_ENABLED_STATUS = false;
 }
 
 $json = array();

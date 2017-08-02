@@ -21,18 +21,18 @@ function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 	$result = $conn->query($siteQuery);
 	
 	if($result !== false) {
-		$SITE_INFO= $result->fetch_assoc();
-			
+		$row = $result->fetch_assoc();
+			$SITE_ID = $row['site_ID'];
 	
 	
 		if($DEBUG) {
 			echo "SITE DEBUG <br/> \n <pre>";
-			print_r($SITE_INFO);
+			print_r($row);
 			echo "</pre> \n";
 		}
 	
 	}
-	return $SITE_INFO;
+	return $SITE_ID;
 }
 
 function submitVote($conn, $VOTE_SEQUENCE, $voteValue) {
