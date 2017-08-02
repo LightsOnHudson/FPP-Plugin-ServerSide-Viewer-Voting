@@ -52,26 +52,6 @@ echo getSites($conn);
 echo "<input type=\"submit\" name=\"SUBMIT_SITE_SELECT\" value=\"Select Site\"> \n";
 echo "</form> \n";
 
-$loginQuery = "SELECT * FROM sites";
-$result = $conn->query($loginQuery);
-
-
-	while($row = $result->fetch_assoc()) {
-		
-		echo "user id: ".$row['user_ID'];
-		echo "<br/> \n";
-		echo "first_name: ".urldecode($row['first_name']);
-		echo "<br/> \n";
-		echo "last_name: ".urldecode($row['last_name']);
-		echo "<br/> \n";
-		echo "email: ".urldecode($row['email']);
-		echo "<br/> \n";
-		echo "phone number: ".urldecode($row['contact_number']);
-		echo "<br/> \n";
-		echo date('d M Y H:i:s',$row['timestamp']);
-		echo "<br/> \n";
-		
-	}
 
 $conn->close();
 
