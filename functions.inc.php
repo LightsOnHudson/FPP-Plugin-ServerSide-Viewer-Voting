@@ -6,6 +6,8 @@ function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 	
 	global $DEBUG, $SITE_ENABLED_STATUS;
 	
+	logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
+	
 	$timestamp = time();
 	
 	$SITE_INFO = array();
