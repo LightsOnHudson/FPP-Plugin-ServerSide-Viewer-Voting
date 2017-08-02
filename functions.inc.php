@@ -14,6 +14,32 @@ function printFormSelectFromArray($conn, $select_name, $data_array, $selected_it
 	
 }
 
+function getSequences($conn, $show_ID) {
+	//This returns that
+	
+	global $DEBUG;
+	
+	$SEQUENCES = array();
+	//$SITES = null;
+	
+	$siteQuery = "SELECT * FROM sequences WHERE show_ID = ".$show_ID;
+	$result = $conn->query($siteQuery);
+	
+	if(!empty($result))
+		while($row = $result->fetch_assoc()) {
+			$SEQUENCES[] = $row;
+		}
+	
+	
+	if($DEBUG) {
+		echo "SEQUENCES DEBUG <br/> \n <pre>";
+		print_r($SEQUENCES);
+		echo "</pre> \n";
+	}
+	
+	return $SEQUENCES;
+}
+
 function getShows($conn, $site_ID) {
 	//This returns that
 	

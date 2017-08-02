@@ -56,10 +56,29 @@ if(!empty($_POST)) {
 		
 			echo "Submitted site id: ".$SITE_ID;
 		
-		//show the available shows and then exit
+			//show the available shows and then exit
+			
+			$SHOWS = getShows($conn, $SITE_ID);
+			
+			echo "<form name=\"selectShow\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+			printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, null);
+			echo "<input type=\"submit\" name=\"SUBMIT_SHOW_SELECT\" value=\"Select Show\"> \n";
+			echo "</form> \n";
+	} elseif(isset($_POST['SUBMIT_SHOW_SELECT'])) {
 		
-		$SHOWS = getShows($conn, $SITE_ID);
-		printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, null);
+		if(is_numeric($_POST['SHOW_ID'] ))
+			$SHOW_ID = $_POST['SITE_ID'];
+			
+			echo "Submitted show id: ".$SHOW_ID;
+			
+			//show the available shows and then exit
+			
+			$SEQUENCES = getSequences($conn, $SHOW_ID);
+			
+			echo "<form name=\"selectSequence\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+			printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, null);
+			echo "<input type=\"submit\" name=\"SUBMIT_SEQUENCE_VOTE\" value=\"VOTE\"> \n";
+			echo "</form> \n";
 		
 	}
 	
