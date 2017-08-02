@@ -67,7 +67,7 @@ if(!empty($_POST)) {
 	} elseif(isset($_POST['SUBMIT_SHOW_SELECT'])) {
 		
 		if(is_numeric($_POST['SHOW_ID'] ))
-			$SHOW_ID = $_POST['SITE_ID'];
+			$SHOW_ID = $_POST['SHOW_ID'];
 			
 			echo "Submitted show id: ".$SHOW_ID;
 			
