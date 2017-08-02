@@ -76,6 +76,7 @@ logEntry("Client token: ".$CLIENT_TOKEN);
 
 //// put whatever response in the array below to respond back using HTML. Then the client will decode it!
 
+//check the votes for the API Token / site 
 
 $json = array();
 $itemObject = new stdClass();
