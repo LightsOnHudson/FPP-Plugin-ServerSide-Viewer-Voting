@@ -54,6 +54,13 @@ $result = $conn->query($loginQuery);
 		echo "first_name: ".urldecode($row['first_name']);
 		echo "<br/> \n";
 		echo "last_name: ".urldecode($row['last_name']);
+		echo "<br/> \n";
+		echo "email: ".urldecode($row['email']);
+		echo "<br/> \n";
+		echo "phone number: ".urldecode($row['contact_number']);
+		echo "<br/> \n";
+		echo date('d M Y H:i:s',$row['timestamp']);
+		echo "<br/> \n";
 		
 	}
 
