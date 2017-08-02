@@ -14,20 +14,25 @@ function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 	//check that the site is ACTIVE value 1
 	
 	$siteQuery = "SELECT * FROM sites WHERE API_TOKEN = '".$CLIENT_TOKEN."' and status_ID=".$SITE_ENABLED_STATUS. " LIMIT 1";
+	
+	if($DEBUG) {
+		logEntry("getSite info sql: ".$siteQuery);
+	}
 	$result = $conn->query($siteQuery);
 	
-	if(!empty($result))
+	if($result !== false) {
 		while($row = $result->fetch_assoc()) {
 			$SITE_INFO[] = $row;
 		}
 	
 	
-	if($DEBUG) {
-		echo "SITE DEBUG <br/> \n <pre>";
-		print_r($SITE_INFO);
-		echo "</pre> \n";
-	}
+		if($DEBUG) {
+			echo "SITE DEBUG <br/> \n <pre>";
+			print_r($SITE_INFO);
+			echo "</pre> \n";
+		}
 	
+	}
 	return $SITE_INFO;
 }
 
