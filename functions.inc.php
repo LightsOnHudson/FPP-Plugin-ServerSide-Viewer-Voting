@@ -55,7 +55,7 @@ function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 					$votes = $votesforsequencesRow['vote_value'];
 					//increment the vote value for this specici site and sequence
 					//$VOTE_DATA[$SITE_ID][$SHOW_ID][$SEQUENCE_ID]++;
-					$VOTE_DATA[$SEQUENCE_ID]++;
+					$VOTE_DATA[$SEQUENCE_ID]['votes']++;
 					
 				}
 			}
