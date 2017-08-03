@@ -3,7 +3,7 @@
 
 function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 	
-	global $DEBUG, $VOTE_UP_VALUE;
+	global $DEBUG, $VOTE_UP_VALUE, $SHOW_ENABLED_STATUS, $SEQUENCE_ENABLED_STATUS;
 	
 	if($DEBUG)
 		logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
@@ -12,21 +12,52 @@ function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 	$VOTE_DATA = array();
 	
 	
-	$VOTE_SQL =  "SELECT votes.sequence_ID, votes.vote_value, shows.show_ID, shows.site_ID, COUNT(*) ";
-	$VOTE_SQL .= " FROM votes, sequences, shows";
-	$VOTE_SQL .= " WHERE votes.sequence_ID = sequences.sequence_ID AND sequences.show_ID = shows.show_ID AND shows.site_ID = ".$SITE_ID;
-	$VOTE_SQL .= " GROUP BY votes.sequence_ID";
-	$VOTE_SQL .= " ORDER BY vote_value DESC";
+	//first get the shows for a site!!!
+	$showSQL = "SELECT * FROM shows WHERE site_ID = ".$SITE_ID." AND status_ID = ".$SHOW_ENABLED_STATUS;
+	
 	
 	if($DEBUG) {
-		logEntry("get votes info sql: ".$VOTE_SQL);
+		logEntry("get shows info sql: ".$showSQL);
 	}
-	$result = $conn->query($VOTE_SQL);
+	$result = $conn->query($showSQL);
+	
+	$VOTES = 0;
 	
 	if($result !== false) {
 		while($row = $result->fetch_assoc()) {
 			
-			$VOTE_DATA[] = $row;
+			$SHOW_ID = $row['show_ID'];
+			
+			//now get the sequences that are enabled for the shows.
+			$sequencesForShow = "SELECT * FROM sequences WHERE show_ID = ".$SHOW_ID." AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
+			
+			
+			if($DEBUG) {
+				logEntry("get sequences for show info sql: ".$sequencesForShow);
+			}
+			$sequencesResult = $conn->query($sequencesForShow);
+			
+			while($sequencesRow = $sequencesResult->fetch_assoc()) {
+				
+				$SEQUENCE_ID = $sequencesRow['sequence_ID'];
+				
+				//how get the Votes for this sequence and add to the array
+				
+				$votesForSequence = "SELECT * FROM votes WHERE sequence_ID = ".$SEQUENCE_ID. " AND vote_value = ".$VOTE_UP_VALUE;
+				
+				if($DEBUG) {
+					logEntry("get votes for sequences info sql: ".$votesForSequence);
+				}
+				$votesforsequencesResult = $conn->query($votesForSequence);
+				
+				while($votesforsequencesRow = $votesforsequencesResult->fetch_assoc()) {
+					
+					$votes = $votesforsequencesRow['vote_value'];
+					//increment the vote value for this specici site and sequence
+					$VOTE_DATA[$SITE_ID][$SHOW_ID][$SEQUENCE_ID]++;
+					
+				}
+			}
 			
 		}
 		

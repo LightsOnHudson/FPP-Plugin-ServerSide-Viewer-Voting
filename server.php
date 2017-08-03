@@ -20,6 +20,8 @@ include_once 'config/userValues.inc';
 $logFile = "/tmp". "/".$pluginName.".log";
 
 $SITE_ENABLED_STATUS = 1;
+$SHOW_ENABLED_STATUS = 1;
+$SEQUENCE_ENABLED_STATUS = 1;
 
 $pluginConfigFile = (__DIR__)."/plugin." .$pluginName;
 logEntry("PluginConfig File: ".$pluginConfigFile);
@@ -108,13 +110,13 @@ if($SITE_ID != "" && $SITE_ID != 0 && $SITE_ID != null) {
 
 if($SITE_ENABLED_STATUS) {
 	//get the votes fot the highest sequence
-	$SEQUENCE = getSequenceWithHighestVotesForSite($conn, $SITE_ID);
+	$SEQUENCE_VOTES = getSequenceWithHighestVotesForSite($conn, $SITE_ID);
 	
-	if($SEQUENCE != null) {
+	if($SEQUENCE_VOTES!= null) {
 		if($DEBUG) {
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
 			
-			foreach ($SEQUENCE as $key => $value) {
+			foreach ($SEQUENCE_VOTES as $key => $value) {
 				if($DEBUG) {
 					logEntry("Sequence key: ".$key." has value: ".$value);
 				}
