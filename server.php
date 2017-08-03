@@ -124,11 +124,14 @@ if($SITE_ENABLED_STATUS) {
 			
 			print_r($SEQUENCE_VOTES);
 			
-			foreach ($SEQUENCE_VOTES as $key => $value) {
-				if($DEBUG) {
-					logEntry("Sequence key: ".$key." has value: ".$value);
-				}
-			}
+			//unfortunately the last one has the value.. UGH 
+			//TODO: get a better sort to but it on the top!
+			$TOTAL_SEQUENCE_VOTES = count($SEQUENCE_VOTES);
+			
+			//index of the one we want is the last one
+			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = end($SEQUENCE_VOTES);
+			
+			echo "Last index in array = ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID;
 			
 		}
 		
