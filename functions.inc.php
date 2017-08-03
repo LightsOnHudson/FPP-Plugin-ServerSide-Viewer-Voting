@@ -70,6 +70,20 @@ function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 	return $VOTE_DATA;
 	
 }
+
+function aasort (&$array, $key) {
+	$sorter=array();
+	$ret=array();
+	reset($array);
+	foreach ($array as $ii => $va) {
+		$sorter[$ii]=$va[$key];
+	}
+	asort($sorter);
+	foreach ($sorter as $ii => $va) {
+		$ret[$ii]=$array[$ii];
+	}
+	$array=$ret;
+}
 function aksort(&$array,$valrev=false,$keyrev=false) {
 	if ($valrev) { arsort($array); } else { asort($array); }
 	$vals = array_count_values($array);

@@ -134,7 +134,9 @@ if($SITE_ENABLED_STATUS) {
 			
 			print_r($SEQUENCE_VOTES);
 			
+			aasort($SEQUENCE_VOTES,"votes");
 			
+			print_r($SEQUENCE_VOTES);
 			
 			foreach ($SEQUENCE_VOTES as $key => $value) {
 				if($DEBUG) {
