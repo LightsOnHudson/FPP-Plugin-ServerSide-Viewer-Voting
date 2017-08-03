@@ -25,11 +25,7 @@ function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 			$SITE_ID = $row['site_ID'];
 	
 	
-		if($DEBUG) {
-			echo "SITE DEBUG <br/> \n <pre>";
-			print_r($row);
-			echo "</pre> \n";
-		}
+		
 	
 	}
 	return $SITE_ID;
