@@ -156,7 +156,7 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 	if($DEBUG) {
 		print_r($SEQUENCE_INFO);
 	}
-	$FSEQ = $SEQUENCE_INFO['fseq'];
+	$FSEQ = $SEQUENCE_INFO[0]['fseq'];
 }
 
 
