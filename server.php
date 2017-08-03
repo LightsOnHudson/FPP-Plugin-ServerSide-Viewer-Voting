@@ -104,7 +104,7 @@ if($SITE_ID != "" && $SITE_ID != 0 && $SITE_ID != null) {
 $json = array();
 $itemObject = new stdClass();
 $itemObject->CLIENT_TOKEN = $CLIENT_TOKEN;
-$itemObject->SITE_ENABLED = $SITE_ENABLED;
+$itemObject->SITE_ENABLED = $SITE_ENABLED_STATUS;
 $itemObject->SEQUENCE = $SEQUENCE;
 $itemObject->VOTES = $VOTES;
 $itemObject->LAST_VOTE_TIMESTAMP= $LAST_VOTE_TIMESTAMP;
