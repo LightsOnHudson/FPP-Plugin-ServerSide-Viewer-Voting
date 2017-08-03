@@ -1,12 +1,50 @@
 <?php
 
 
+function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
+	
+	global $DEBUG, $VOTE_UP_VALUE;
+	
+	if($DEBUG)
+		logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
+	
+	$timestamp = time();
+	$VOTE_DATA = array();
+	
+	
+	$VOTE_SQL =  "SELECT votes.sequence_ID, votes.vote_value, shows.show_ID, shows.site_ID, COUNT(*) ";
+	$VOTE_SQL .= " FROM votes, sequences, shows";
+	$VOTE_SQL .= " WHERE votes.sequence_ID = sequences.sequence_ID AND sequences.show_ID = shows.show_ID AND shows.site_ID = ".$SITE_ID;
+	$VOTE_SQL .= " GROUP BY votes.sequence_ID";
+	$VOTE_SQL .= " ORDER BY vote_value DESC";
+	
+	if($DEBUG) {
+		logEntry("get votes info sql: ".$VOTE_SQL);
+	}
+	$result = $conn->query($VOTE_SQL);
+	
+	if($result !== false) {
+		while($row = $result->fetch_assoc()) {
+			
+			$VOTE_DATA[] = $row;
+			
+		}
+		
+		
+	} else {
+		return null;
+	}
+	
+	return $VOTE_DATA;
+	
+}
 //get the votes for a client token
 function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 	
 	global $DEBUG, $SITE_ENABLED_STATUS;
 	
-	logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
+	if($DEBUG)
+		logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
 	
 	$timestamp = time();
 	

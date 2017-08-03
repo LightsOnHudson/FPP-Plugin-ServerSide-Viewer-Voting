@@ -35,6 +35,11 @@ $PORT = $pluginSettings['PORT'];
 $DEBUG = $pluginSettings['DEBUG'];
 logEntry("DEBUG: ".$DEBUG);
 
+$SEQUENCE = null;
+$VOTES = 0;
+$LAST_VOTE_TIMESTAMP=0;
+$VOTE_UP_VALUE = 1;
+
 
 //$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);
 $ENABLED = urldecode($pluginSettings['ENABLED']);
@@ -101,6 +106,29 @@ if($SITE_ID != "" && $SITE_ID != 0 && $SITE_ID != null) {
 	$SITE_ENABLED_STATUS = false;
 }
 
+if($SITE_ENABLED_STATUS) {
+	//get the votes fot the highest sequence
+	$SEQUENCE = getSequenceWithHighestVotesForSite($conn, $SITE_ID);
+	
+	if($SEQUENCE != null) {
+		if($DEBUG) {
+			logEntry("We got sequence votes for site id: ".$SITE_ID);
+			
+			foreach ($SEQUENCE as $key => $value) {
+				if($DEBUG) {
+					logEntry("Sequence key: ".$key." has value: ".$value);
+				}
+			}
+			
+		}
+		
+		
+	} else {
+		logEntry("NO Sequence votes data for site id: ".$SITE_ID);
+		$VOTES = 0;
+	}
+}
+
 $json = array();
 $itemObject = new stdClass();
 $itemObject->CLIENT_TOKEN = $CLIENT_TOKEN;
@@ -113,7 +141,10 @@ $itemObject->LAST_VOTE_TIMESTAMP= $LAST_VOTE_TIMESTAMP;
 
 array_push($json, $itemObject);
 $json = json_encode($json, JSON_PRETTY_PRINT);
+
+//echo it out so it can be retrieved by the client!
 echo $json;
 
+$conn->close();
 
 ?>
