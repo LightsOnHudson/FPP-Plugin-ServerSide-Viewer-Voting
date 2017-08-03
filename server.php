@@ -118,21 +118,7 @@ if($SITE_ENABLED_STATUS) {
 			print_r($SEQUENCE_VOTES);
 			
 			
-			
-			aksort($SEQUENCE_VOTES);
-		//print_r($tmp);
-			print_r($SEQUENCE_VOTES);
-			
-			asort($SEQUENCE_VOTES,'votes');
-			print_r($SEQUENCE_VOTES);
-			
-			uasort($SEQUENCE_VOTES, 'votes');
-			
-			print_r($SEQUENCE_VOTES);
-			
-			usort($SEQUENCE_VOTES, 'votes');
-			
-			print_r($SEQUENCE_VOTES);
+	
 			
 			aasort($SEQUENCE_VOTES,"votes");
 			
