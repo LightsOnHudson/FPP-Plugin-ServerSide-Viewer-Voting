@@ -80,7 +80,8 @@ function aksort(&$array,$valrev=false,$keyrev=false) {
 		if ($keyrev) { krsort($tmp); } else { ksort($tmp); }
 		$array = array_merge($first,$tmp,$array);
 		unset($tmp);
-		$i = $num;
+		$i = $i+$num;
+		// Fixed from previous post: $i = $num;
 	}
 }
 //get the votes for a client token
