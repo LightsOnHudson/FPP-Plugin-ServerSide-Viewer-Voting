@@ -117,6 +117,7 @@ if($SITE_ENABLED_STATUS) {
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
 			print_r($SEQUENCE_VOTES);
 			
+			echo array_max_key($SEQUENCE_VOTES);
 			foreach ($SEQUENCE_VOTES as $key => $value) {
 				if($DEBUG) {
 					logEntry("Sequence key: ".$key." has value: ".$value);

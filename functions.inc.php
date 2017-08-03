@@ -69,6 +69,20 @@ function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 	return $VOTE_DATA;
 	
 }
+
+function array_max_key($array) {
+	$max_key = -1;
+	$max_val = -1;
+	
+	foreach ($array as $key => $value) {
+		if ($value > $max_val) {
+			$max_key = $key;
+			$max_val = $value;
+		}
+	}
+	
+	return $max_key;
+}
 //get the votes for a client token
 function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {
 	
