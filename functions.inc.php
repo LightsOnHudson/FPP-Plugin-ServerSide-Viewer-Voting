@@ -69,19 +69,18 @@ function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 	return $VOTE_DATA;
 	
 }
-
-function array_max_key($array) {
-	$max_key = -1;
-	$max_val = -1;
-	
-	foreach ($array as $key => $value) {
-		if ($value > $max_val) {
-			$max_key = $key;
-			$max_val = $value;
-		}
+function aksort(&$array,$valrev=false,$keyrev=false) {
+	if ($valrev) { arsort($array); } else { asort($array); }
+	$vals = array_count_values($array);
+	$i = 0;
+	foreach ($vals AS $val=>$num) {
+		$first = array_splice($array,0,$i);
+		$tmp = array_splice($array,0,$num);
+		if ($keyrev) { krsort($tmp); } else { ksort($tmp); }
+		$array = array_merge($first,$tmp,$array);
+		unset($tmp);
+		$i = $num;
 	}
-	
-	return $max_key;
 }
 //get the votes for a client token
 function getSiteIDFromAPIToken($conn, $CLIENT_TOKEN) {

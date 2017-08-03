@@ -120,6 +120,10 @@ if($SITE_ENABLED_STATUS) {
 			usort($SEQUENCE_VOTES);
 			print_r($SEQUENCE_VOTES);
 			
+			aksort($SEQUENCE_VOTES,true,true);
+		//print_r($tmp);
+			print_r($SEQUENCE_VOTES);
+			
 			foreach ($SEQUENCE_VOTES as $key => $value) {
 				if($DEBUG) {
 					logEntry("Sequence key: ".$key." has value: ".$value);
