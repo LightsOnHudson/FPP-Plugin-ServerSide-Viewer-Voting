@@ -132,6 +132,10 @@ if($SITE_ENABLED_STATUS) {
 			
 			print_r($SEQUENCE_IDS);
 			
+			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = $SEQUENCE_VOTES[array_pop($SEQUENCE_IDS)];
+			
+			echo "Sequence with highest votes: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID;
+			
 		}
 		
 		
