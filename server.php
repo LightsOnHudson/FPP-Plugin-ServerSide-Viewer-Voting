@@ -129,7 +129,7 @@ if($SITE_ENABLED_STATUS) {
 			$TOTAL_SEQUENCE_VOTES = count($SEQUENCE_VOTES);
 			
 			//index of the one we want is the last one
-			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = end($SEQUENCE_VOTES);
+			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = $SEQUENCE_VOTES[count($SEQUENCE_VOTES) -1];
 			
 			echo "Last index in array = ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID;
 			
