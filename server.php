@@ -111,7 +111,7 @@ if($SITE_ENABLED_STATUS) {
 	$SEQUENCE_VOTES = getSequenceWithHighestVotesForSite($conn, $SITE_ID);
 	
 	if($SEQUENCE_VOTES!= null) {
-		if($DEBUG) {
+		if($DEBUG) 
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
 			if($DEBUG)
 				print_r($SEQUENCE_VOTES);
@@ -140,7 +140,7 @@ if($SITE_ENABLED_STATUS) {
 			$VOTES = $SEQUENCE_VOTES[$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID];
 			
 			logEntry("Received: ".$VOTES. " for sequence: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
-		}
+		
 		
 		
 	} else {
