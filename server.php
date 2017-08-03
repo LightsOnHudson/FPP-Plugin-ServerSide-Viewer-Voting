@@ -128,10 +128,9 @@ if($SITE_ENABLED_STATUS) {
 			//TODO: get a better sort to but it on the top!
 			$TOTAL_SEQUENCE_VOTES = count($SEQUENCE_VOTES);
 			
-			//index of the one we want is the last one
-			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = $SEQUENCE_VOTES[count($SEQUENCE_VOTES) -1];
+			$SEQUENCE_IDS = array_keys($SEQUENCE_VOTES);
 			
-			echo "Last index in array = ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID;
+			print_r($SEQUENCE_IDS);
 			
 		}
 		
