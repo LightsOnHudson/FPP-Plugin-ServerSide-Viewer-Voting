@@ -71,6 +71,7 @@ function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 	
 }
 
+//get the SEQUENCE information for a given Sequence ID
 function aasort (&$array, $key) {
 	$sorter=array();
 	$ret=array();
@@ -207,7 +208,33 @@ function printFormSelectFromArray($conn, $select_name, $data_array, $index_ID_na
 	
 }
 
-function getSequences($conn, $show_ID) {
+function getSequenceInfoForSequenceID($conn, $sequence_ID) {
+	//This returns that
+	
+	global $DEBUG;
+	
+	$SEQUENCES = array();
+	//$SITES = null;
+	
+	$sequenceQuery = "SELECT * FROM sequences WHERE sequence_ID = ".$sequence_ID;
+	$result = $conn->query($sequenceQuery);
+	
+	if(!empty($result))
+		while($row = $result->fetch_assoc()) {
+			$SEQUENCES[] = $row;
+		}
+	
+	
+	if($DEBUG) {
+		echo "SEQUENCES DEBUG <br/> \n <pre>";
+		print_r($SEQUENCES);
+		echo "</pre> \n";
+	}
+	
+	return $SEQUENCES;
+}
+
+function getSequencesForShowID($conn, $show_ID) {
 	//This returns that
 	
 	global $DEBUG;

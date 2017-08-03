@@ -115,14 +115,15 @@ if($SITE_ENABLED_STATUS) {
 	if($SEQUENCE_VOTES!= null) {
 		if($DEBUG) {
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
-			print_r($SEQUENCE_VOTES);
+			if($DEBUG)
+				print_r($SEQUENCE_VOTES);
 			
 			
 	
 			
 			aasort($SEQUENCE_VOTES,"votes");
-			
-			print_r($SEQUENCE_VOTES);
+			if($DEBUG)
+				print_r($SEQUENCE_VOTES);
 			
 			//unfortunately the last one has the value.. UGH 
 			//TODO: get a better sort to but it on the top!
@@ -130,11 +131,13 @@ if($SITE_ENABLED_STATUS) {
 			
 			$SEQUENCE_IDS = array_keys($SEQUENCE_VOTES);
 			
-			print_r($SEQUENCE_IDS);
+			if($DEBUG)
+				print_r($SEQUENCE_IDS);
 			
 			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = $SEQUENCE_IDS[count($SEQUENCE_IDS)-1];
 			
-			echo "Sequence with highest votes: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID;
+			if($DEBUG) 
+			logEntry("Sequence with highest votes: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
 			
 		}
 		
@@ -144,6 +147,15 @@ if($SITE_ENABLED_STATUS) {
 		$VOTES = 0;
 	}
 }
+
+if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
+	$SEQUENCE_INFO = getSequenceInfoForSequenceID($conn, $SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
+	
+	if($DEBUG) {
+		print_r($SEQUENCE_INFO);
+	}
+}
+
 
 $json = array();
 $itemObject = new stdClass();

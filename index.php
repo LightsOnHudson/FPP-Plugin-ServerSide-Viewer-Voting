@@ -78,7 +78,7 @@ if(!empty($_POST)) {
 			
 			//show the available shows and then exit
 			
-			$SEQUENCES = getSequences($conn, $SHOW_ID);
+			$SEQUENCES = getSequencesForShowID($conn, $SHOW_ID);
 			
 			echo "<form name=\"sequenceVote\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 			
