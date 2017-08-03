@@ -139,6 +139,7 @@ if($SITE_ENABLED_STATUS) {
 			
 			$VOTES = $SEQUENCE_VOTES[$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID];
 			
+			logEntry("Received: ".$VOTES. " for sequence: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
 		}
 		
 		
