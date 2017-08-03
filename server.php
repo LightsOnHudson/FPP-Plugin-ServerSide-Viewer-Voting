@@ -96,9 +96,9 @@ if (!$conn)
 $SITE_ID = getSiteIDFromAPIToken($conn, $CLIENT_TOKEN);
 
 if($SITE_ID != "" && $SITE_ID != 0 && $SITE_ID != null) {
-	$SITE_ENABLED_STATUS = 1;
+	$SITE_ENABLED_STATUS = true;
 } else {
-	$SITE_ENABLED_STATUS = 0;
+	$SITE_ENABLED_STATUS = false;
 }
 
 $json = array();
