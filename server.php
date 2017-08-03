@@ -115,6 +115,7 @@ if($SITE_ENABLED_STATUS) {
 	if($SEQUENCE_VOTES!= null) {
 		if($DEBUG) {
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
+			print_r($SEQUENCE_VOTES);
 			
 			foreach ($SEQUENCE_VOTES as $key => $value) {
 				if($DEBUG) {
