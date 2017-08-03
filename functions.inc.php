@@ -216,7 +216,7 @@ function getSequenceInfoForSequenceID($conn, $sequence_ID) {
 	$SEQUENCES = array();
 	//$SITES = null;
 	
-	$sequenceQuery = "SELECT * FROM sequences WHERE sequence_ID = ".$sequence_ID;
+	$sequenceQuery = "SELECT * FROM sequences WHERE sequence_ID = ".$sequence_ID . " LIMIT 1";
 	$result = $conn->query($sequenceQuery);
 	
 	if(!empty($result))

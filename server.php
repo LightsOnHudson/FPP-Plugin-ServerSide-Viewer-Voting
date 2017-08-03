@@ -139,6 +139,8 @@ if($SITE_ENABLED_STATUS) {
 			if($DEBUG) 
 			logEntry("Sequence with highest votes: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
 			
+			$VOTES = $SEQUENCE_VOTES[$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID];
+			
 		}
 		
 		
@@ -154,6 +156,7 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 	if($DEBUG) {
 		print_r($SEQUENCE_INFO);
 	}
+	$FSEQ = $SEQUENCE_INFO['fseq'];
 }
 
 
@@ -161,7 +164,7 @@ $json = array();
 $itemObject = new stdClass();
 $itemObject->CLIENT_TOKEN = $CLIENT_TOKEN;
 $itemObject->SITE_ENABLED = $SITE_ENABLED_STATUS;
-$itemObject->SEQUENCE = $SEQUENCE;
+$itemObject->FSEQ = $FSEQ;
 $itemObject->VOTES = $VOTES;
 $itemObject->LAST_VOTE_TIMESTAMP= $LAST_VOTE_TIMESTAMP;
 
