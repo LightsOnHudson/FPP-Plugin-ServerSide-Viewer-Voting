@@ -137,7 +137,7 @@ if($SITE_ENABLED_STATUS) {
 			if($DEBUG) 
 				logEntry("Sequence with highest votes: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
 			
-			$VOTES = $SEQUENCE_VOTES[$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID];
+			$VOTES = $SEQUENCE_VOTES[$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID]['votes'];
 			
 			logEntry("Received: ".$VOTES. " for sequence: ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
 		
