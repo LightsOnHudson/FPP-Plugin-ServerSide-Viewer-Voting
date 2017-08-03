@@ -3,12 +3,8 @@
 //added Dec 3 2015
 //ob_implicit_flush();
 
-include 'php_serial.class.php';
-include_once('projectorCommands.inc');
 
-$skipJSsettings = 1;
-include_once '/opt/fpp/www/config.php';
-include_once '/opt/fpp/www/common.php';
+
 
 $pluginName  = "FPPViewerVotingServer";
 
@@ -35,6 +31,8 @@ $myPid = getmypid();
 //$PORT = ReadSettingFromFile("PORT",$pluginName);
 $PORT = $pluginSettings['PORT'];
 $DEBUG = $pluginSettings['DEBUG'];
+
+
 logEntry("DEBUG: ".$DEBUG);
 
 $SEQUENCE = null;
