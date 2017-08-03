@@ -126,6 +126,10 @@ if($SITE_ENABLED_STATUS) {
 			asort($SEQUENCE_VOTES,'votes');
 			print_r($SEQUENCE_VOTES);
 			
+			uasort($SEQUENCE_VOTES, 'votes');
+			
+			print_r($SEQUENCE_VOTES);
+			
 			
 			foreach ($SEQUENCE_VOTES as $key => $value) {
 				if($DEBUG) {
