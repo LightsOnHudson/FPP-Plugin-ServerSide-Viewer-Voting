@@ -117,10 +117,9 @@ if($SITE_ENABLED_STATUS) {
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
 			print_r($SEQUENCE_VOTES);
 			
-			usort($SEQUENCE_VOTES);
-			print_r($SEQUENCE_VOTES);
 			
-			aksort($SEQUENCE_VOTES);
+			
+			aksort($SEQUENCE_VOTES, true, true);
 		//print_r($tmp);
 			print_r($SEQUENCE_VOTES);
 			
