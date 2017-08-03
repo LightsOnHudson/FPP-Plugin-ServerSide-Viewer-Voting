@@ -120,7 +120,7 @@ if($SITE_ENABLED_STATUS) {
 			usort($SEQUENCE_VOTES);
 			print_r($SEQUENCE_VOTES);
 			
-			aksort($SEQUENCE_VOTES,true,true);
+			aksort($SEQUENCE_VOTES);
 		//print_r($tmp);
 			print_r($SEQUENCE_VOTES);
 			
