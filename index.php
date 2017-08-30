@@ -57,7 +57,8 @@ if(!empty($_POST)) {
 		if(is_numeric($_POST['SITE_ID'] ))
 			$SITE_ID = $_POST['SITE_ID'];
 		
-			echo "Submitted site id: ".$SITE_ID;
+			if($DEBUG)
+				echo "Submitted site id: ".$SITE_ID;
 		
 			//show the available shows and then exit
 			
@@ -76,6 +77,7 @@ if(!empty($_POST)) {
 		if(is_numeric($_POST['SHOW_ID'] ))
 			$SHOW_ID = $_POST['SHOW_ID'];
 			
+			if($DEBUG)
 			echo "Submitted show id: ".$SHOW_ID;
 			
 			//show the available shows and then exit
