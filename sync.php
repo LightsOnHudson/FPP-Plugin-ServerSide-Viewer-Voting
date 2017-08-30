@@ -122,8 +122,10 @@ if($SITE_ENABLED_STATUS) {
 //look at the SEQUENCES and extract them out
 $SEQUENCE_ARRAY = explode(",",$SEQUENCES);
 
+$SEQUENCE_COUNT =0;
 foreach ($SEQUENCE_ARRAY as $seq) {
-	logEntry("Sequence: ".$seq);
+	logEntry("Sequence: #:".$SEQUENCE_COUNT." ".$seq);
+	$SEQUENCE_COUNT++;
 }
 
 
