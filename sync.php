@@ -77,18 +77,8 @@ if(!empty($_POST)) {
 			if(!empty($_GET['API_TOKEN'])) {
 				$CLIENT_TOKEN = $_GET['API_TOKEN'];
 				$SYNC_CMD = $_GET['SYNC_CMD'];
-				$data = json_decode($_GET, TRUE);
-				logEntry("Json data: ".$data);
 				
-				//print_r($data);
-				if($DEBUG) {
-					logEntry("JSON data back from server: ".$SERVER_IP);
-					
-					foreach($data[0] as $key => $value) {
-						logEntry("KEY: ".$key. " = ".$value);
-					}
-					
-				}
+				$SEQUENCES = $_GET['SEQUENCES'];
 			}
 		
 	}
@@ -128,6 +118,15 @@ if($SITE_ENABLED_STATUS) {
 } else {
 	logEntry("Site id: ".$SITE_ID." is not enabled with API Token: ".$CLIENT_TOKEN);
 }
+
+//look at the SEQUENCES and extract them out
+$SEQUENCE_ARRAY = explode(",",$SEQUENCES);
+
+foreach ($SEQUENCE_ARRAY as $seq) {
+	logEntry("Sequence: ".$seq);
+}
+
+
 $conn->close();
 
 ?>
