@@ -64,6 +64,9 @@ if(!empty($_POST)) {
 			if(!empty($_POST['API_TOKEN'])) {
 				$CLIENT_TOKEN = $_POST['API_TOKEN'];
 				$SYNC_CMD = $_POST['SYNC_CMD'];
+				$data = json_decode($_POST, TRUE);
+				logEntry("Json data: ".$data);
+				
 			}
 		
 	}
