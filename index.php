@@ -20,6 +20,8 @@ logEntry("PluginConfig File: ".$pluginConfigFile);
 if (file_exists($pluginConfigFile))
 	$pluginSettings = parse_ini_file($pluginConfigFile);
 
+//get the base page to return them back to
+$BASE_PAGE = basename($_SERVER['PHP_SELF']);
 
 $myPid = getmypid();
 
@@ -103,6 +105,9 @@ if(!empty($_POST)) {
 		submitVote($conn, $VOTE_SEQUENCE, 0);
 		//exit here since the user is inquiring about a site
 		$conn->close();
+		echo "Thank you for your vote <br/> \n";
+		echo "<br/> <br/> \n";
+		echo "Click <a href=\"".$BASE_PAGE."\">HERE</a> to vote again \n";
 		exit(0);
 		
 	} elseif(isset($_POST['vote_up'])){
@@ -120,6 +125,10 @@ if(!empty($_POST)) {
 		submitVote($conn, $VOTE_SEQUENCE, 1);
 		//exit here since the user is inquiring about a site
 		$conn->close();
+		
+		echo "Thank you for your vote <br/> \n";
+		echo "<br/> <br/> \n";
+		echo "Click <a href=\"".$BASE_PAGE."\">HERE</a> to vote again \n";
 		exit(0);
 	
 }
