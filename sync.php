@@ -74,7 +74,18 @@ if(!empty($_POST)) {
 			if(!empty($_GET['API_TOKEN'])) {
 				$CLIENT_TOKEN = $_GET['API_TOKEN'];
 				$SYNC_CMD = $_GET['SYNC_CMD'];
+				$data = json_decode($_GET, TRUE);
+				logEntry("Json data: ".$data);
 				
+				//print_r($data);
+				if($DEBUG) {
+					logEntry("JSON data back from server: ".$SERVER_IP);
+					
+					foreach($data[0] as $key => $value) {
+						logEntry("KEY: ".$key. " = ".$value);
+					}
+					
+				}
 			}
 		
 	}
