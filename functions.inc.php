@@ -189,6 +189,7 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 		echo "<tr> \n";
 		
 		echo "<td> \n";
+		echo "...";
 		echo basename(urldecode($seq['name']),".fseq").PHP_EOL;
 		echo "</td> \n";
 		
