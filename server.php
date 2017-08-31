@@ -158,7 +158,8 @@ if($SITE_ENABLED_STATUS) {
 		$VOTES = 0;
 	}
 } else {
-	logEntry("Site id: ".$SITE_ID." is not enabled");
+	logEntry("Site  is not enabled");
+	logEntry(str_repeat("-=", 50));
 	exit(0);
 }
 
