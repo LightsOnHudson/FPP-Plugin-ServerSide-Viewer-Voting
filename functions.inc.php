@@ -160,9 +160,9 @@ function submitVote($conn, $VOTE_SEQUENCE, $voteValue) {
 	$timestamp = time();
 	
 	$sqlInsertVote = "INSERT into votes (timestamp, sequence_ID, vote_value) VALUES (".$timestamp.",".$VOTE_SEQUENCE.",".$voteValue.")";
+	logEntry("Sql insert vote: ".$sqlInsertVote);
 	
-	if($DEBUG)
-		echo $sqlInsertVote."<br/> \n";
+	
 		
 		$result = $conn->query($sqlInsertVote);
 		
