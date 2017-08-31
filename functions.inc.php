@@ -181,7 +181,7 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 	
 	global $DEBUG, $VOTE_ARROW_UP, $VOTE_ARROW_DOWN;
 	
-	
+	echo "<form name=\"sequenceVote\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 	echo "<table border=\"1\" cellspacing=\"1\" cellpadding=\"1\"> \n";
 	
 	foreach ($SEQUENCES as $seq) {
@@ -192,6 +192,8 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 		echo "...";
 		$SEQUENCE_NAME = $from=substr(urldecode($seq['name']), 0, (strlen (urldecode($seq['name']))) - (strlen (strrchr(urldecode($seq['name']),'.'))));
 		echo $SEQUENCE_NAME;
+		echo "<input type=\"hidden\"  name=\"sequence_ID\" value=\"".$seq['sequence_ID']."\"> \n";
+		
 		echo "</td> \n";
 		
 		
@@ -211,7 +213,7 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 	
 	
 	echo "</table> \n";
-	
+	echo "</form> \n";
 	
 }
 //print a select option of the array passed with the selected item as optional??

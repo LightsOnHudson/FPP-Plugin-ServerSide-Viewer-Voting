@@ -76,13 +76,13 @@ if(!empty($_POST)) {
 				}
 				//$SEQUENCES = getSequencesForShowID($conn, $SHOW_ID);
 				
-				echo "<form name=\"sequenceVote\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+				
 				
 				printSequenceVoteForm($conn, $SEQUENCES);
 				
 				//	printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
 				
-				echo "</form> \n";
+				
 				$conn->close();
 				exit(0);
 				/*
@@ -122,7 +122,7 @@ if(!empty($_POST)) {
 	} elseif(isset($_POST['vote_down'])) {
 		
 		//the sequence ID is in the vote_down variable
-		$VOTE_SEQUENCE = $_POST['vote_down'];
+		$VOTE_SEQUENCE = $_POST['sequence_ID'];
 		
 		if($DEBUG) {
 			logEntry("We got a VOTE DOWN for sequence: ".$VOTE_SEQUENCE);
@@ -142,7 +142,7 @@ if(!empty($_POST)) {
 		
 		
 		//the sequence ID is in the vote_up variable
-		$VOTE_SEQUENCE = $_POST['vote_up'];
+		$VOTE_SEQUENCE = $_POST['sequence_ID'];
 		
 		if($DEBUG) {
 			logEntry("We got a VOTE UP for sequence: ".$VOTE_SEQUENCE);
