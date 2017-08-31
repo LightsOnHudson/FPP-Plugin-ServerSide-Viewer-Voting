@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 //added Dec 3 2015
 //ob_implicit_flush();
 
@@ -118,28 +118,28 @@ if($SITE_ENABLED_STATUS) {
 	if($SEQUENCE_VOTES!= null) {
 		if($DEBUG) 
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
-			if($DEBUG)
+			if($DEBUG) {
 				//do not output to the screen only logentry for debug
 				
 				//print_r($SEQUENCE_VOTES);
-			
+			}
 			
 	
 			
 			aasort($SEQUENCE_VOTES,"votes");
 			
-			if($DEBUG)
+			if($DEBUG) {
 				//print_r($SEQUENCE_VOTES);
-			
+			}
 			//unfortunately the last one has the value.. UGH 
 			//TODO: get a better sort to but it on the top!
 			$TOTAL_SEQUENCE_VOTES = count($SEQUENCE_VOTES);
 			
 			$SEQUENCE_IDS = array_keys($SEQUENCE_VOTES);
 			
-			if($DEBUG)
+			if($DEBUG) {
 				//print_r($SEQUENCE_IDS);
-			
+			}
 			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = $SEQUENCE_IDS[count($SEQUENCE_IDS)-1];
 			
 			if($DEBUG) 
