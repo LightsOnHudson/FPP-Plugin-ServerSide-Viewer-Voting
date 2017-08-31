@@ -161,6 +161,9 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 	//$FSEQ = urldecode($FSEQ);
 	$FSEQ=substr($FSEQ, 0, (strlen ($FSEQ) - strlen (strrchr($FSEQ,'.'))));
 	
+	//if there are spaces in the name have to replace with _ because the playlists require _ for spaces!!!
+	$FSEQ = str_replace($FSEQ, " ", "_");
+	
 	logEntry("Sending fseq: ".$FSEQ." back to system that asked");
 }
 
