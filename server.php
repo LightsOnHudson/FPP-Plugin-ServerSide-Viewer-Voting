@@ -155,7 +155,12 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 	if($DEBUG) {
 		print_r($SEQUENCE_INFO);
 	}
+	//strip the .FSEQ from it if it exists
 	$FSEQ = $SEQUENCE_INFO[0]['fseq'];
+	//$FSEQ = urldecode($FSEQ);
+	$FSEQ=substr(urldecode($FSEQ), 0, (strlen ($FSEQ))) - (strlen (strrchr(urldecode($FSEQ),'.')));
+	
+	
 }
 
 
