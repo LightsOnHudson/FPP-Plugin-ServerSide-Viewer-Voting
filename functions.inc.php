@@ -283,6 +283,33 @@ function getSequencesForShowID($conn, $show_ID) {
 	return $SEQUENCES;
 }
 
+function getSequencesForSiteID($conn, $site_ID) {
+	//This returns that
+	
+	global $DEBUG;
+	
+	$SEQUENCES = array();
+	//$SITES = null;
+	
+	$siteQuery = "SELECT * FROM sequences WHERE site_ID = ".$site_ID;
+	$result = $conn->query($siteQuery);
+	
+	if(!empty($result))
+		while($row = $result->fetch_assoc()) {
+			$SEQUENCES[] = $row;
+		}
+	
+	
+	if($DEBUG) {
+		echo "SEQUENCES DEBUG <br/> \n <pre>";
+		print_r($SEQUENCES);
+		echo "</pre> \n";
+	}
+	
+	return $SEQUENCES;
+}
+
+
 function getShows($conn, $site_ID) {
 	//This returns that
 	

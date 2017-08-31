@@ -61,16 +61,30 @@ if(!empty($_POST)) {
 				echo "Submitted site id: ".$SITE_ID;
 		
 			//show the available shows and then exit
-			
-			$SHOWS = getShows($conn, $SITE_ID);
-			
-			echo "<form name=\"selectShow\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
-			printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, "show_ID",null);
-			echo "<input type=\"submit\" name=\"SUBMIT_SHOW_SELECT\" value=\"Select Show\"> \n";
-			echo "</form> \n";
-			
-			$conn->close();
-			exit(0);
+			//currently not enableing getting shows, will do this later
+				$SEQUENCES = getSequencesForSiteID($conn, $site_ID);
+				//$SEQUENCES = getSequencesForShowID($conn, $SHOW_ID);
+				
+				echo "<form name=\"sequenceVote\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+				
+				printSequenceVoteForm($conn, $SEQUENCES);
+				
+				//	printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
+				
+				echo "</form> \n";
+				$conn->close();
+				exit(0);
+				/*
+				$SHOWS = getShows($conn, $SITE_ID);
+				
+				echo "<form name=\"selectShow\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+				printFormSelectFromArray($conn, "SHOW_ID", $SHOWS, "show_ID",null);
+				echo "<input type=\"submit\" name=\"SUBMIT_SHOW_SELECT\" value=\"Select Show\"> \n";
+				echo "</form> \n";
+				
+				$conn->close();
+				exit(0);
+				*/
 			
 	} elseif(isset($_POST['SUBMIT_SHOW_SELECT'])) {
 		
