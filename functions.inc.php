@@ -181,11 +181,11 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 	
 	global $DEBUG, $VOTE_ARROW_UP, $VOTE_ARROW_DOWN;
 	
-	echo "<form name=\"sequenceVote\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
+	
 	echo "<table border=\"1\" cellspacing=\"1\" cellpadding=\"1\"> \n";
 	
 	foreach ($SEQUENCES as $seq) {
-		
+		echo "<form name=\"sequenceVote\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 		echo "<tr> \n";
 		
 		echo "<td> \n";
@@ -209,11 +209,12 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 		//print_r($data_arr);
 		
 		//echo "<input type=\"submit\" name=\"SUBMIT_SEQUENCE_VOTE\" value=\"VOTE\"> \n";
+		echo "</form> \n";
 	}
 	
 	
 	echo "</table> \n";
-	echo "</form> \n";
+	
 	
 }
 //print a select option of the array passed with the selected item as optional??
