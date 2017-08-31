@@ -44,6 +44,11 @@ $VOTE_UP_VALUE = 1;
 //$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);
 $ENABLED = urldecode($pluginSettings['ENABLED']);
 
+if($DEBUG) {
+	logEntry(str_repeat("-=", 50));
+	logEntry("Incomming IP: ".$_SERVER['REMOTE_ADDR']);
+	logEntry(str_repeat("-=", 50));
+}
 
 if($DEBUG) {
 	logEntry("PORT: ".$PORT);
@@ -114,14 +119,17 @@ if($SITE_ENABLED_STATUS) {
 		if($DEBUG) 
 			logEntry("We got sequence votes for site id: ".$SITE_ID);
 			if($DEBUG)
-				print_r($SEQUENCE_VOTES);
+				//do not output to the screen only logentry for debug
+				
+				//print_r($SEQUENCE_VOTES);
 			
 			
 	
 			
 			aasort($SEQUENCE_VOTES,"votes");
+			
 			if($DEBUG)
-				print_r($SEQUENCE_VOTES);
+				//print_r($SEQUENCE_VOTES);
 			
 			//unfortunately the last one has the value.. UGH 
 			//TODO: get a better sort to but it on the top!
@@ -130,7 +138,7 @@ if($SITE_ENABLED_STATUS) {
 			$SEQUENCE_IDS = array_keys($SEQUENCE_VOTES);
 			
 			if($DEBUG)
-				print_r($SEQUENCE_IDS);
+				//print_r($SEQUENCE_IDS);
 			
 			$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID = $SEQUENCE_IDS[count($SEQUENCE_IDS)-1];
 			
@@ -153,18 +161,20 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 	$SEQUENCE_INFO = getSequenceInfoForSequenceID($conn, $SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID);
 	
 	if($DEBUG) {
-		print_r($SEQUENCE_INFO);
+		//print_r($SEQUENCE_INFO);
 	}
 	//strip the .FSEQ from it if it exists
 	$FSEQ = urldecode($SEQUENCE_INFO[0]['fseq']);
-	logEntry("FSEQ before decoding and trimming: ".$FSEQ);
+	if($DEBUG)
+		logEntry("FSEQ before decoding and trimming: ".$FSEQ);
 	//$FSEQ = urldecode($FSEQ);
 	$FSEQ=substr($FSEQ, 0, (strlen ($FSEQ) - strlen (strrchr($FSEQ,'.'))));
 	
 	//if there are spaces in the name have to replace with _ because the playlists require _ for spaces!!!
 	$FSEQ = preg_replace('/\s+/', '_', $FSEQ);
 	
-	logEntry("Sending fseq: ".$FSEQ." back to system that asked");
+	if($DEBUG)
+		logEntry("Sending fseq: ".$FSEQ." back to system that asked");
 }
 
 
