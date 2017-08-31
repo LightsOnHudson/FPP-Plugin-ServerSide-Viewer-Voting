@@ -6,6 +6,10 @@
 $VOTE_ARROW_UP = "images/up-arrow-icon.jpg";
 $VOTE_ARROW_DOWN = "images/down-arrow-icon.jpg";
 $pluginName  = "FPPViewerVotingServer";
+$SITE_ENABLED_STATUS = 1;
+$SHOW_ENABLED_STATUS = 1;
+$SEQUENCE_ENABLED_STATUS = 1;
+$SEQUENCE_INACTIVE_STATUS = 2;
 
 include_once 'functions.inc.php';
 include_once 'config/userValues.inc';

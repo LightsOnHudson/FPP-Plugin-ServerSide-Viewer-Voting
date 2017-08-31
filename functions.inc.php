@@ -262,12 +262,12 @@ function getSequenceInfoForSequenceID($conn, $sequence_ID) {
 function getSequencesForShowID($conn, $show_ID) {
 	//This returns that
 	
-	global $DEBUG;
+	global $DEBUG, $SEQUENCE_ENABLED_STATUS;
 	
 	$SEQUENCES = array();
 	//$SITES = null;
 	$SEQ_INDEX = 0;
-	$siteQuery = "SELECT * FROM sequences WHERE show_ID = ".$show_ID;
+	$siteQuery = "SELECT * FROM sequences WHERE show_ID = ".$show_ID . " AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 	$result = $conn->query($siteQuery);
 	
 	if(!empty($result))
@@ -293,13 +293,13 @@ function getSequencesForShowID($conn, $show_ID) {
 function getSequencesForSiteID($conn, $site_ID) {
 	//This returns that
 	
-	global $DEBUG;
+	global $DEBUG, $SEQUENCE_ENABLED_STATUS;
 	
 	$SEQUENCES = array();
 	//$SITES = null;
 	
 	$SEQ_INDEX = 0;
-	$siteQuery = "SELECT * FROM sequences WHERE site_ID = ".$site_ID;
+	$siteQuery = "SELECT * FROM sequences WHERE site_ID = ".$site_ID ." AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 	if($DEBUG) {
 		logentry("Getting sequences for site id: ".$site_ID);
 	}
