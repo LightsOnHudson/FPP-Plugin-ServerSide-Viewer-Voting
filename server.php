@@ -47,7 +47,7 @@ $ENABLED = urldecode($pluginSettings['ENABLED']);
 //if($DEBUG) {
 	logEntry(str_repeat("-=", 50));
 	logEntry("Incomming IP: ".$_SERVER['REMOTE_ADDR']);
-	logEntry(str_repeat("-=", 50));
+	
 //}
 
 if($DEBUG) {
@@ -157,6 +157,9 @@ if($SITE_ENABLED_STATUS) {
 		logEntry("NO Sequence votes data for site id: ".$SITE_ID);
 		$VOTES = 0;
 	}
+} else {
+	logEntry("Site id: ".$SITE_ID." is not enabled");
+	exit(0);
 }
 
 if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
@@ -197,5 +200,7 @@ $json = json_encode($json, JSON_PRETTY_PRINT);
 echo $json;
 
 $conn->close();
+
+logEntry(str_repeat("-=", 50));
 
 ?>
