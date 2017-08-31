@@ -65,6 +65,9 @@ if(!empty($_POST)) {
 				$SEQUENCES = getSequencesForSiteID($conn, $SITE_ID);
 				if($SEQUENCES == null) {
 					echo "Sorry this site does not have any items to vote for at this time \n";
+					
+					echo "<br/> <br/> \n";
+					echo "Click <a href=\"".$BASE_PAGE."\">HERE</a> to try again later \n";
 					exit(0);
 				}
 				//$SEQUENCES = getSequencesForShowID($conn, $SHOW_ID);
