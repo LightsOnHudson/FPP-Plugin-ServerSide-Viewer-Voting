@@ -302,7 +302,10 @@ function getSequencesForSiteID($conn, $site_ID) {
 	$siteQuery = "SELECT * FROM sequences WHERE site_ID = ".$site_ID;
 	$result = $conn->query($siteQuery);
 	
-	if(!empty($result)) {
+	if(mysql_num_rows($result) <= 0 ) {
+		return null;
+	}
+	if(!empty($result)) 
 		while($row = $result->fetch_assoc()) {
 			$SEQUENCES[$SEQ_INDEX] = $row;
 			//if the name has not yet been defined, then use the FSEQ name..
@@ -314,16 +317,14 @@ function getSequencesForSiteID($conn, $site_ID) {
 		}
 	
 	
-	if($DEBUG) {
-		echo "SEQUENCES DEBUG <br/> \n <pre>";
-		print_r($SEQUENCES);
-		echo "</pre> \n";
-	}
+		if($DEBUG) {
+			echo "SEQUENCES DEBUG <br/> \n <pre>";
+			print_r($SEQUENCES);
+			echo "</pre> \n";
+		}
+		
+		return $SEQUENCES;
 	
-	return $SEQUENCES;
-	} else {
-		return null;
-	}
 }
 
 

@@ -63,7 +63,7 @@ if(!empty($_POST)) {
 			//show the available shows and then exit
 			//currently not enableing getting shows, will do this later
 				$SEQUENCES = getSequencesForSiteID($conn, $SITE_ID);
-				if($SEQUENCES === null) {
+				if($SEQUENCES == null) {
 					echo "Sorry this site does not have any items to vote for at this time \n";
 					exit(0);
 				}
