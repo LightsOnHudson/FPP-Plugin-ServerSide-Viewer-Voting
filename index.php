@@ -62,11 +62,14 @@ if(!empty($_POST)) {
 			$SITE_ID = $_POST['SITE_ID'];
 		
 			if($DEBUG)
-				echo "Submitted site id: ".$SITE_ID;
+				echo "Submitted site id: ".$SITE_ID."<br/> \n";
 		
 			//show the available shows and then exit
 			//currently not enableing getting shows, will do this later
 				$SEQUENCES = getSequencesForSiteID($conn, $SITE_ID);
+				if($DEBUG) 
+					print_r($SEQUENCES);
+				
 				if($SEQUENCES == null) {
 					echo "Sorry this site does not have any items to vote for at this time \n";
 					
@@ -103,7 +106,7 @@ if(!empty($_POST)) {
 			$SHOW_ID = $_POST['SHOW_ID'];
 			
 			if($DEBUG)
-			echo "Submitted show id: ".$SHOW_ID;
+				echo "Submitted show id: ".$SHOW_ID;
 			
 			//show the available shows and then exit
 			
