@@ -159,7 +159,7 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 	$FSEQ = urldecode($SEQUENCE_INFO[0]['fseq']);
 	logEntry("FSEQ before decoding and trimming: ".$FSEQ);
 	//$FSEQ = urldecode($FSEQ);
-	$FSEQ=substr($FSEQ, 0, (strlen ($FSEQ))) - (strlen (strrchr($FSEQ,'.')));
+	$FSEQ=substr($FSEQ, 0, (strlen ($FSEQ) - strlen (strrchr($FSEQ,'.'))));
 	
 	logEntry("Sending fseq: ".$FSEQ." back to system that asked");
 }
