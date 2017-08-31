@@ -296,7 +296,13 @@ function getSequencesForSiteID($conn, $site_ID) {
 	
 	if(!empty($result))
 		while($row = $result->fetch_assoc()) {
-			$SEQUENCES[] = $row;
+			
+			//if the name has not yet been defined, then use the FSEQ name..
+			if($row['name'] === "") {
+				$SEQUENCES[]['name'] = $row['fseq'];
+			} else {
+				$SEQUENCES[] = $row;
+			}
 		}
 	
 	
