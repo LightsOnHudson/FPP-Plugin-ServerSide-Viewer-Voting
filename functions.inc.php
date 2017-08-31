@@ -302,10 +302,11 @@ function getSequencesForSiteID($conn, $site_ID) {
 			//if the name has not yet been defined, then use the FSEQ name..
 			if($row['name'] === "") {
 				$SEQUENCES[]['name'] = $row['fseq'];
-				$SEQUENCES[]['sequence_ID'] = $row['sequence_ID'];
+				
 			} else {
 				$SEQUENCES[] = $row;
 			}
+			$SEQUENCES[]['sequence_ID'] = $row['sequence_ID'];
 		}
 	
 	
