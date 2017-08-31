@@ -189,7 +189,7 @@ function printSequenceVoteForm($conn, $SEQUENCES) {
 		echo "<tr> \n";
 		
 		echo "<td> \n";
-		echo "...";
+		//echo "...";
 		$SEQUENCE_NAME = $from=substr(urldecode($seq['name']), 0, (strlen (urldecode($seq['name']))) - (strlen (strrchr(urldecode($seq['name']),'.'))));
 		echo $SEQUENCE_NAME;
 		echo "<input type=\"hidden\"  name=\"sequence_ID\" value=\"".$seq['sequence_ID']."\"> \n";
@@ -254,9 +254,8 @@ function getSequenceInfoForSequenceID($conn, $sequence_ID) {
 	
 	
 	if($DEBUG) {
-		echo "SEQUENCES DEBUG <br/> \n <pre>";
-		print_r($SEQUENCES);
-		echo "</pre> \n";
+		logEntry( "SEQUENCES DEBUG");
+		
 	}
 	
 	return $SEQUENCES;
@@ -285,9 +284,8 @@ function getSequencesForShowID($conn, $show_ID) {
 		}
 	
 	if($DEBUG) {
-		echo "SEQUENCES DEBUG <br/> \n <pre>";
-		print_r($SEQUENCES);
-		echo "</pre> \n";
+		logEntry( "SEQUENCES DEBUG");
+		
 	}
 	
 	return $SEQUENCES;
@@ -322,9 +320,8 @@ function getSequencesForSiteID($conn, $site_ID) {
 	
 	
 		if($DEBUG) {
-			echo "SEQUENCES DEBUG <br/> \n <pre>";
-			print_r($SEQUENCES);
-			echo "</pre> \n";
+			logEntry( "SEQUENCES DEBUG");
+			
 		}
 		
 		return $SEQUENCES;
@@ -353,9 +350,8 @@ function getShows($conn, $site_ID) {
 	
 	
 	if($DEBUG) {
-		echo "SHOWS DEBUG <br/> \n <pre>";
-		print_r($SHOWS);
-		echo "</pre> \n";
+		logEntry( "Shows DEBUG");
+		
 	}
 	
 	return $SHOWS;
@@ -380,9 +376,8 @@ function getSites($conn) {
 		
 		
 	if($DEBUG) {
-		echo "SITES DEBUG <br/> \n <pre>";
-		print_r($SITES);
-		echo "</pre> \n";
+		logEntry( "SITES DEBUG");
+		
 	}
 	
 	return $SITES;
@@ -637,71 +632,5 @@ function escapeshellarg_special($file) {
 }
 
 
-function processCallback($argv) {
 
-	global $DEBUG,$pluginName;
-	
-	
-	if($DEBUG)
-		print_r($argv);
-	//argv0 = program
-	
-	//argv2 should equal our registration // need to process all the rgistrations we may have, array??
-	//argv3 should be --data
-	//argv4 should be json data
-	
-	$registrationType = $argv[2];
-	$data =  $argv[4];
-	
-	logEntry("PROCESSING CALLBACK");
-	$clearMessage=FALSE;
-	
-	switch ($registrationType)
-	{
-		case "media":
-			if($argv[3] == "--data")
-			{
-				$data=trim($data);
-				logEntry("DATA: ".$data);
-				$obj = json_decode($data);
-	
-				$type = $obj->{'type'};
-	
-				switch ($type) {
-						
-					case "sequence":
-	
-						//$sequenceName = ;
-						processSequenceName($obj->{'Sequence'});
-							
-						break;
-					case "media":
-							
-						logEntry("We do not understand type media at this time");
-							
-						exit(0);
-	
-						break;
-	
-					default:
-						logEntry("We do not understand: type: ".$obj->{'type'}. " at this time");
-						exit(0);
-						break;
-	
-				}
-	
-	
-			}
-	
-			break;
-			exit(0);
-				
-		default:
-			exit(0);
-	
-	}
-	
-
-
-}
 ?>
