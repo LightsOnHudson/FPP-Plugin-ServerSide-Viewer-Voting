@@ -3,15 +3,15 @@
 //ad the sequence to the site in the database
 function addSequenceToSite($conn, $SITE_ID, $SEQUENCE) {
 	
-	global $DEBUG;
+	global $DEBUG, $SEQUENCE_ENABLED_STATUS;
 	
 	if($DEBUG)
 		logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
 		
 		$timestamp = time();
 		
-		$sqlInsertSequence  = "INSERT INTO sequences (site_ID, fseq, timestamp) VALUES ";
-		$sqlInsertSequence .= " (".$SITE_ID.",'".urlencode($SEQUENCE)."',".$timestamp.")";
+		$sqlInsertSequence  = "INSERT INTO sequences (site_ID, fseq, timestamp, status_ID) VALUES ";
+		$sqlInsertSequence .= " (".$SITE_ID.",'".urlencode($SEQUENCE)."',".$timestamp.",".$SEQUENCE_ENABLED_STATUS.")";
 		
 		if($DEBUG) {
 			logEntry("insert sequence sql: ".$sqlInsertSequence);
