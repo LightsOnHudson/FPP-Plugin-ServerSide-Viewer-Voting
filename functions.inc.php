@@ -1,5 +1,28 @@
 <?php
 
+//ad the sequence to the site in the database
+function addSequenceToSite($conn, $SITE_ID, $SEQUENCE) {
+	
+	global $DEBUG;
+	
+	if($DEBUG)
+		logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
+		
+		$timestamp = time();
+		
+		$sqlInsertSequence  = "INSERT INTO sequences (site_ID, fseq, timestamp) VALUES ";
+		$sqlInsertSequence .= " (".$SITE_ID.",'".urlencode($SEQUENCE)."',".$timestamp.")";
+		
+		if($DEBUG) {
+			logEntry("insert sequence sql: ".$sqlInsertSequence);
+		}
+		$result = $conn->query($sqlInsertSequence);
+		if($result !== false) {
+			return true;
+		}
+		
+		return false;
+}
 
 function getSequenceWithHighestVotesForSite($conn, $SITE_ID) {
 	

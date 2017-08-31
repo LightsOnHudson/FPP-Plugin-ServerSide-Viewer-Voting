@@ -83,6 +83,8 @@ if(!empty($_POST)) {
 		
 	}
 }
+
+$SYNC_CMD = trim(strtoupper($SYNC_CMD));
 //sleep(2);
 logEntry("Client token: ".$CLIENT_TOKEN);
 
@@ -115,17 +117,39 @@ if($SITE_ID != "" && $SITE_ID != 0 && $SITE_ID != null) {
 
 if($SITE_ENABLED_STATUS) {
 
+	switch($SYNC_CMD) {
+		
+		case "SEQUENCES":
+			
+			//we can sync, the site is enabled!
+			//look at the SEQUENCES and extract them out
+			$SEQUENCE_ARRAY = explode(",",$SEQUENCES);
+			
+			$SEQUENCE_COUNT =0;
+			foreach ($SEQUENCE_ARRAY as $seq) {
+				logEntry("Sequence: #:".$SEQUENCE_COUNT." ".$seq);
+				addSequenceToSite($conn, $SITE_ID, $seq);
+				$SEQUENCE_COUNT++;
+			}
+			
+			break;
+			
+			
+			
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 } else {
 	logEntry("Site id: ".$SITE_ID." is not enabled with API Token: ".$CLIENT_TOKEN);
-}
 
-//look at the SEQUENCES and extract them out
-$SEQUENCE_ARRAY = explode(",",$SEQUENCES);
 
-$SEQUENCE_COUNT =0;
-foreach ($SEQUENCE_ARRAY as $seq) {
-	logEntry("Sequence: #:".$SEQUENCE_COUNT." ".$seq);
-	$SEQUENCE_COUNT++;
+
 }
 
 
