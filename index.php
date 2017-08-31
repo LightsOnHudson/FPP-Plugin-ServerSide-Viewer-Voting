@@ -119,7 +119,7 @@ if(!empty($_POST)) {
 			$conn->close();
 			exit(0);
 		
-	} elseif(isset($_POST['vote_down'])) {
+	} elseif(isset($_POST['vote_down_x'])) {
 		
 		//the sequence ID is in the vote_down variable
 		$VOTE_SEQUENCE = $_POST['sequence_ID'];
@@ -137,7 +137,7 @@ if(!empty($_POST)) {
 		echo "Click <a href=\"".$BASE_PAGE."\">HERE</a> to vote again \n";
 		exit(0);
 		
-	} elseif(isset($_POST['vote_up'])){
+	} elseif(isset($_POST['vote_up_x'])){
 		
 		
 		
