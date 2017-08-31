@@ -44,11 +44,11 @@ $VOTE_UP_VALUE = 1;
 //$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);
 $ENABLED = urldecode($pluginSettings['ENABLED']);
 
-if($DEBUG) {
+//if($DEBUG) {
 	logEntry(str_repeat("-=", 50));
 	logEntry("Incomming IP: ".$_SERVER['REMOTE_ADDR']);
 	logEntry(str_repeat("-=", 50));
-}
+//}
 
 if($DEBUG) {
 	logEntry("PORT: ".$PORT);
@@ -74,13 +74,15 @@ if(!empty($_POST)) {
 	}
 } elseif(!empty($_GET)) {
 	
+	if(!empty($_GET['API_TOKEN'])) {
+		$CLIENT_TOKEN = $_GET['API_TOKEN'];
+		
+	}
+	if($DEBUG) {
 		foreach($_GET as $key => $value) {
 			logEntry( "GET parameter '$key' has '$value'");
-			if(!empty($_GET['API_TOKEN'])) {
-				$CLIENT_TOKEN = $_GET['API_TOKEN'];
-				
-			}
-		
+			
+		}
 	}
 }
 //sleep(2);
