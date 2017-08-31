@@ -266,15 +266,20 @@ function getSequencesForShowID($conn, $show_ID) {
 	
 	$SEQUENCES = array();
 	//$SITES = null;
-	
+	$SEQ_INDEX = 0;
 	$siteQuery = "SELECT * FROM sequences WHERE show_ID = ".$show_ID;
 	$result = $conn->query($siteQuery);
 	
 	if(!empty($result))
 		while($row = $result->fetch_assoc()) {
-			$SEQUENCES[] = $row;
+			$SEQUENCES[$SEQ_INDEX] = $row;
+			//if the name has not yet been defined, then use the FSEQ name..
+			if($row['name'] === "") {
+				$SEQUENCES[$SEQ_INDEX]['name'] = $row['fseq'];
+				
+			}
+			$SEQ_INDEX++;
 		}
-	
 	
 	if($DEBUG) {
 		echo "SEQUENCES DEBUG <br/> \n <pre>";
@@ -297,7 +302,7 @@ function getSequencesForSiteID($conn, $site_ID) {
 	$siteQuery = "SELECT * FROM sequences WHERE site_ID = ".$site_ID;
 	$result = $conn->query($siteQuery);
 	
-	if(!empty($result))
+	if(!empty($result)) {
 		while($row = $result->fetch_assoc()) {
 			$SEQUENCES[$SEQ_INDEX] = $row;
 			//if the name has not yet been defined, then use the FSEQ name..
@@ -316,6 +321,9 @@ function getSequencesForSiteID($conn, $site_ID) {
 	}
 	
 	return $SEQUENCES;
+	} else {
+		return null;
+	}
 }
 
 
