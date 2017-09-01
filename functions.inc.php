@@ -169,7 +169,7 @@ function submitVote($conn, $VOTE_SEQUENCE, $voteValue) {
 		$result = $conn->query($sqlInsertVote);
 		
 		if($result) {
-			if($DEBUG)
+			//if($DEBUG)
 				logEntry("Entered vote for sequence: ".$VOTE_SEQUENCE. " value: ".$voteValue);
 		} else {
 			

@@ -37,7 +37,8 @@ if($DEBUG) {
 	logEntry("PluginConfig File: ".$pluginConfigFile);
 	logEntry("DEBUG: ".$DEBUG);
 }
-
+logEntry(str_repeat("-=", 50));
+logEntry("Incomming IP: ".$_SERVER['REMOTE_ADDR']);
 
 
 $conn = dbConnect($DB_SERVER_IP, $DB_USER, $DB_PASS, $db);
@@ -46,6 +47,7 @@ if (!$conn)
 	logEntry("Could not connect: " . mysql_error());
 	
 	//EXIT here because could not connect to database!
+	logEntry(str_repeat("-=", 50));
 	exit(0);
 } else {
 	if($DEBUG) {
@@ -88,7 +90,7 @@ if(!empty($_POST)) {
 				
 				//	printFormSelectFromArray($conn, "SEQUENCE_ID", $SEQUENCES, "sequence_ID", null);
 				
-				
+				logEntry(str_repeat("-=", 50));
 				$conn->close();
 				exit(0);
 				/*
@@ -123,6 +125,7 @@ if(!empty($_POST)) {
 			
 			echo "</form> \n";
 			$conn->close();
+			logEntry(str_repeat("-=", 50));
 			exit(0);
 		
 	} elseif(isset($_POST['vote_down_x'])) {
@@ -141,6 +144,8 @@ if(!empty($_POST)) {
 		echo "Thank you for your vote <br/> \n";
 		echo "<br/> <br/> \n";
 		echo "Click <a href=\"".$BASE_PAGE."\">HERE</a> to vote again \n";
+		logEntry(str_repeat("-=", 50));
+		$conn->close();
 		exit(0);
 		
 	} elseif(isset($_POST['vote_up_x'])){
@@ -162,6 +167,8 @@ if(!empty($_POST)) {
 		echo "Thank you for your vote <br/> \n";
 		echo "<br/> <br/> \n";
 		echo "Click <a href=\"".$BASE_PAGE."\">HERE</a> to vote again \n";
+		logEntry(str_repeat("-=", 50));
+		$conn->close();
 		exit(0);
 	
 }
@@ -185,6 +192,6 @@ echo "</form> \n";
 
 
 $conn->close();
-
+logEntry(str_repeat("-=", 50));
 
 ?>
