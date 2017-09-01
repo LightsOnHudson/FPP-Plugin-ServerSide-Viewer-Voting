@@ -66,8 +66,8 @@ if(!empty($_POST)) {
 		if(is_numeric($_POST['SITE_ID'] ))
 			$SITE_ID = $_POST['SITE_ID'];
 		
-			if($DEBUG)
-				echo "Submitted site id: ".$SITE_ID."<br/> \n";
+			//if($DEBUG)
+				logEntry( "Submitted site id: ".$SITE_ID);
 		
 			//show the available shows and then exit
 			//currently not enableing getting shows, will do this later
@@ -77,7 +77,7 @@ if(!empty($_POST)) {
 				
 				if($SEQUENCES == null) {
 					echo "Sorry this site does not have any items to vote for at this time \n";
-					
+					logEntry( "Sorry this site does not have any items to vote for at this time");
 					echo "<br/> <br/> \n";
 					echo "Click <a href=\"".$BASE_PAGE."\">HERE</a> to try again later \n";
 					exit(0);
@@ -111,7 +111,7 @@ if(!empty($_POST)) {
 			$SHOW_ID = $_POST['SHOW_ID'];
 			
 			if($DEBUG)
-				echo "Submitted show id: ".$SHOW_ID;
+				logEntry( "Submitted show id: ".$SHOW_ID);
 			
 			//show the available shows and then exit
 			
