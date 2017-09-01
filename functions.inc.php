@@ -160,15 +160,17 @@ function submitVote($conn, $VOTE_SEQUENCE, $voteValue) {
 	$timestamp = time();
 	
 	$sqlInsertVote = "INSERT into votes (timestamp, sequence_ID, vote_value) VALUES (".$timestamp.",".$VOTE_SEQUENCE.",".$voteValue.")";
-	logEntry("Sql insert vote: ".$sqlInsertVote);
+	
+	if($DEBUG)
+		logEntry("Sql insert vote: ".$sqlInsertVote);
 	
 	
 		
 		$result = $conn->query($sqlInsertVote);
 		
 		if($result) {
-			
-			logEntry("Entered vote for sequence: ".$VOTE_SEQUENCE. " value: ".$voteValue);
+			if($DEBUG)
+				logEntry("Entered vote for sequence: ".$VOTE_SEQUENCE. " value: ".$voteValue);
 		} else {
 			
 			logEntry("COULD NOT ENTER vote for sequence: ".$VOTE_SEQUENCE. " value: ".$voteValue);

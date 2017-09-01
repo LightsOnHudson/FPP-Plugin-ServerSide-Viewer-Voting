@@ -19,7 +19,8 @@ $logFile = "/tmp". "/".$pluginName.".log";
 
 
 $pluginConfigFile = (__DIR__)."/plugin." .$pluginName;
-logEntry("PluginConfig File: ".$pluginConfigFile);
+
+
 
 if (file_exists($pluginConfigFile))
 	$pluginSettings = parse_ini_file($pluginConfigFile);
@@ -32,8 +33,10 @@ $myPid = getmypid();
 //$PORT = ReadSettingFromFile("PORT",$pluginName);
 $PORT = $pluginSettings['PORT'];
 $DEBUG = $pluginSettings['DEBUG'];
-logEntry("DEBUG: ".$DEBUG);
-
+if($DEBUG) {
+	logEntry("PluginConfig File: ".$pluginConfigFile);
+	logEntry("DEBUG: ".$DEBUG);
+}
 
 
 
