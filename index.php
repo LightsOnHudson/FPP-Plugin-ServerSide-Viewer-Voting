@@ -183,7 +183,7 @@ if(!empty($_POST)) {
 echo "<form name=\"selectSite\" action=\"".$SERVER['PHP_SELF']."\" method=\"post\"> \n";
 
 $SITES = getSites($conn);
-
+logEntry("displaying available sites");
 //print select from array
 printFormSelectFromArray($conn, "SITE_ID", $SITES, "site_ID",null, true);
 
