@@ -74,11 +74,15 @@ foreach($data as $key => $value) {
 foreach($data['SEQUENCES'] as $seq) {
 	logEntry(" TEST DATA sequences  KEY: ".$seq);
 }
+
+$SYNC_CMD = $data['SYNC_CMD'];
+$CLIENT_TOKEN = $data['API_TOKEN'];
 //logEntry($data);
 //echo $data["operacion"];
 
 //if(!empty($_POST)) {
 	
+/*
 		foreach($_POST as $key => $value) {
 			logEntry( "POST parameter '$key' has '$value'");
 			if(!empty($_POST['API_TOKEN'])) {
@@ -105,6 +109,8 @@ foreach($data['SEQUENCES'] as $seq) {
 //}
 
 $SYNC_CMD = trim(strtoupper($SYNC_CMD));
+
+*/
 //sleep(2);
 logEntry("Client token: ".$CLIENT_TOKEN);
 
