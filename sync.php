@@ -66,7 +66,11 @@ if(isset($_GET)) {
 	
 }
 
-$data = json_decode(file_get_contents('php://input'), true);
+$INCOMMING_DATA = file_get_contents('php://input');
+
+logEntry("Icomming data: ".$INCOMMING_DATA);
+
+$data = json_decode($INCOMMING_DATA, true);
 //we got some data!
 foreach($data as $key => $value) {
 	logEntry(" TEST DATA KEY: ".$key. " = ".$value);
