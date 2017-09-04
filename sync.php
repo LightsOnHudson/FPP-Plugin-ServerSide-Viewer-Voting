@@ -67,7 +67,11 @@ if(isset($_GET)) {
 }
 
 $data = json_decode(file_get_contents('php://input'), true);
-logEntry($data);
+//we got some data!
+foreach($data as $key => $value) {
+	logEntry(" TEST DATA KEY: ".$key. " = ".$value);
+}
+//logEntry($data);
 //echo $data["operacion"];
 
 //if(!empty($_POST)) {
