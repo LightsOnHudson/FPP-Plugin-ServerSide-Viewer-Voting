@@ -181,6 +181,23 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 	
 	if($DEBUG)
 		logEntry("Sending fseq: ".$FSEQ." back to system that asked");
+	
+	//	$LAST_VOTE_TIMESTAMP = $SEQUENCE_VOTES[$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID]['timestamp'];
+
+		//get the last time this sequence was voted on
+		$SQLGetLastTimestamp = "SELECT * FROM votes WHERE sequence_ID = ".$SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID. " ORDER BY timestamp DESC";
+		
+		if($DEBUG) {
+			logEntry("get sql last timestamp for sequence: ".$SQLGetLastTimestamp);
+		}
+		$result = $conn->query($SQLGetLastTimestamp);
+		if($result !== false) {
+			$rowSql = mysql_fetch_assoc($result);
+			//the first one is the highest one
+			$LAST_VOTE_TIMESTAMP = $rowSql['timestamp'];
+		}
+		
+
 }
 
 
