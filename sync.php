@@ -57,6 +57,14 @@ if(!$ENABLED) {
 	exit(0);	
 }
 
+if(isset($_POST)) {
+	logEntry("We got POST!");
+	
+}
+if(isset($_GET)) {
+	logEntry("We got GET!");
+	
+}
 
 if(!empty($_POST)) {
 	
