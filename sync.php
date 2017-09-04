@@ -71,6 +71,9 @@ $data = json_decode(file_get_contents('php://input'), true);
 foreach($data as $key => $value) {
 	logEntry(" TEST DATA KEY: ".$key. " = ".$value);
 }
+foreach($data['SEQUENCES'] as $seq) {
+	logEntry(" TEST DATA sequences  KEY: ".$seq);
+}
 //logEntry($data);
 //echo $data["operacion"];
 
