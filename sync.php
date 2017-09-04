@@ -76,9 +76,9 @@ foreach($data as $key => $value) {
 	logEntry(" TEST DATA KEY: ".$key. " = ".$value);
 }
 
-$SEQUENCES = json_decode($data['SEQUENCES'], true);
+$SEQUENCE_ARRAY= json_decode($data['SEQUENCES'], true);
 
-foreach($SEQUENCES as $seq) {
+foreach($SEQUENCE_ARRAY as $seq) {
 	logEntry(" TEST DATA sequences  KEY: ".$seq);
 }
 
@@ -166,7 +166,7 @@ if($SITE_ENABLED_STATUS) {
 			
 			//we can sync, the site is enabled!
 			//look at the SEQUENCES and extract them out
-			$SEQUENCE_ARRAY = explode(",",$SEQUENCES);
+		//	$SEQUENCE_ARRAY = explode(",",$SEQUENCES);
 			
 			$SEQUENCE_COUNT =0;
 			foreach ($SEQUENCE_ARRAY as $seq) {
