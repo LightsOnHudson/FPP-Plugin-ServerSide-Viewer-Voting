@@ -66,7 +66,7 @@ if(isset($_GET)) {
 	
 }
 
-if(!empty($_POST)) {
+//if(!empty($_POST)) {
 	
 		foreach($_POST as $key => $value) {
 			logEntry( "POST parameter '$key' has '$value'");
@@ -79,7 +79,7 @@ if(!empty($_POST)) {
 			}
 		
 	}
-} elseif(!empty($_GET)) {
+//} elseif(!empty($_GET)) {
 	
 		foreach($_GET as $key => $value) {
 			logEntry( "GET parameter '$key' has '$value'");
@@ -91,7 +91,7 @@ if(!empty($_POST)) {
 			}
 		
 	}
-}
+//}
 
 $SYNC_CMD = trim(strtoupper($SYNC_CMD));
 //sleep(2);
