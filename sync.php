@@ -75,7 +75,10 @@ $data = json_decode($INCOMMING_DATA, true);
 foreach($data as $key => $value) {
 	logEntry(" TEST DATA KEY: ".$key. " = ".$value);
 }
-foreach($data['SEQUENCES'] as $seq) {
+
+$SEQUENCES = json_decode($data['SEQUENCES'], true);
+
+foreach($SEQUENCES as $seq) {
 	logEntry(" TEST DATA sequences  KEY: ".$seq);
 }
 
