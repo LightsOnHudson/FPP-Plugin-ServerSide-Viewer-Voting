@@ -192,7 +192,7 @@ if($SEQUENCE_WITH_HIGHEST_VOTES_FOR_SITE_ID != 0) {
 		}
 		$result = $conn->query($SQLGetLastTimestamp);
 		if($result !== false) {
-			$rowSql = mysql_fetch_assoc($result);
+			$rowSql = $result->fetch_assoc();
 			//the first one is the highest one
 			$LAST_VOTE_TIMESTAMP = $rowSql['timestamp'];
 		}
