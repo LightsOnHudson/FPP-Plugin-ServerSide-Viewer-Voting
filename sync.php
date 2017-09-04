@@ -66,6 +66,10 @@ if(isset($_GET)) {
 	
 }
 
+$data = json_decode(file_get_contents('php://input'), true);
+logEntry($data);
+//echo $data["operacion"];
+
 //if(!empty($_POST)) {
 	
 		foreach($_POST as $key => $value) {
