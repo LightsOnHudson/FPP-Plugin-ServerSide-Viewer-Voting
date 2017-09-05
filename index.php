@@ -19,8 +19,9 @@ $logFile = "/tmp". "/".$pluginName.".log";
 
 
 $pluginConfigFile = (__DIR__)."/plugin." .$pluginName;
-
-
+echo "<head> \n";
+echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+echo "</head> \n";
 
 if (file_exists($pluginConfigFile))
 	$pluginSettings = parse_ini_file($pluginConfigFile);
@@ -186,7 +187,7 @@ $SITES = getSites($conn);
 logEntry("displaying available sites");
 //print select from array
 printFormSelectFromArray($conn, "SITE_ID", $SITES, "site_ID",null, true);
-
+echo "<br/> \n";
 echo "<input type=\"submit\" name=\"SUBMIT_SITE_SELECT\" value=\"Select Site\"> \n";
 echo "</form> \n";
 
