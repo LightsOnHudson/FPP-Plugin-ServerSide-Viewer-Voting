@@ -143,6 +143,10 @@ if($SITE_ENABLED_STATUS) {
 		
 		case "SEQUENCE":
 			
+			if($DEBUG) {
+				logEntry("Resetting of a sequence");
+				
+			}
 			if(trim($SEQUENCE) == "") {
 				if($DEBUG) {
 					logEntry("Reset of Sequence requested, but no sequence/song sent in");
@@ -207,6 +211,8 @@ if($SITE_ENABLED_STATUS) {
 			break;
 			
 		case "ALL":
+			
+			
 			//ALL
 			$sqlGetSequencesForSite = "SELECT * FROM sequences WHERE site_ID = ".$SITE_ID . " AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 			$result = $conn->query($sqlGetSequencesForSite);
