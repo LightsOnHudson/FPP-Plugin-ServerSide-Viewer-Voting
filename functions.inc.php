@@ -1,4 +1,24 @@
 <?php
+//reset the votes for a given sequence id
+
+function resetVotesForSequenceID($conn, $SEQUENCE_ID) {
+	global $DEBUG, $SEQUENCE_ENABLED_STATUS;
+	
+	if($DEBUG)
+		logEntry("Inside: ".__FUNCTION__,1,__FILE__,__LINE__);
+		
+		$timestamp = time();
+		
+		$sqlDeleteSequenceVotes = "DELETE FROM votes WHERE sequence_ID = ".$SEQUENCE_ID;
+		$result = $conn->query($sqlDeleteSequenceVotes);
+		if($DEBUG) {
+			logEntry("delete  sequence votes sql: ".$sqlDeleteSequenceVotes);
+		}
+		
+		
+	
+}
+
 
 //ad the sequence to the site in the database
 function addSequenceToSite($conn, $SITE_ID, $SEQUENCE) {
