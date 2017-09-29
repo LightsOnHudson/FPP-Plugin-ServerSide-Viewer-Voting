@@ -137,11 +137,6 @@ if($SITE_ENABLED_STATUS) {
 	}
 	//first set ALL sequences temporarily to status id disabled
 	//inactive = 2
-	$sqlSetSequencesInactiveForSiteID = "UPDATE sequences SET status_ID = ".$SEQUENCE_INACTIVE_STATUS." WHERE site_ID = ".$SITE_ID;
-	
-	if($DEBUG)
-		logEntry("Setting sequences inactive for site id: ".$SITE_ID.": ".$sqlSetSequencesInactiveForSiteID);
-	$result = $conn->query($sqlSetSequencesInactiveForSiteID);
 	
 
 	switch($RESET_CMD) {
