@@ -133,7 +133,7 @@ if($SITE_ID != "" && $SITE_ID != 0 && $SITE_ID != null) {
 if($SITE_ENABLED_STATUS) {
 	
 	if($DEBUG) {
-		logEntry("Site is enable: attempting a reset command");
+		logEntry("Site is enabled: attempting a reset command");
 	}
 	//first set ALL sequences temporarily to status id disabled
 	//inactive = 2
@@ -143,6 +143,12 @@ if($SITE_ENABLED_STATUS) {
 		
 		case "SEQUENCE":
 			
+			if(trim($SEQUENCE) == "") {
+				if($DEBUG) {
+					logEntry("Reset of Sequence requested, but no sequence/song sent in");
+					exit(0);
+				}
+			}
 			$sqlGetSequencesForSite = "SELECT * FROM sequences WHERE site_ID = ".$SITE_ID . " AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 			$result = $conn->query($sqlGetSequencesForSite);
 			
@@ -170,6 +176,13 @@ if($SITE_ENABLED_STATUS) {
 			break;
 			
 		case "SONG":
+			
+			if(trim($SEQUENCE) == "") {
+				if($DEBUG) {
+					logEntry("Reset of Sequence requested, but no sequence/song sent in");
+					exit(0);
+				}
+			}
 			
 			$sqlGetSequencesForSite = "SELECT * FROM sequences WHERE site_ID = ".$SITE_ID . " AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 			$result = $conn->query($sqlGetSequencesForSite);
