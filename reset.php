@@ -160,7 +160,7 @@ if($SITE_ENABLED_STATUS) {
 				
 				while($row = $result->fetch_assoc()) {
 					if($DEBUG) {
-						logEntry("SEQUENCE Comparision: row: ".$row['fseq']. " looking for: ".$SEQUENCE);
+						logEntry("SEQUENCE Comparision: row: ".urldecode(trim($row['fseq'])). " looking for: ".$SEQUENCE);
 					}
 					//search through the sequences to find the one taht was sent in
 					if(strtoupper(urldecode(trim($row['fseq']))) == strtoupper(trim($SEQUENCE))) {
@@ -186,25 +186,40 @@ if($SITE_ENABLED_STATUS) {
 			
 		case "SONG":
 			
+			if($DEBUG) {
+				logEntry("Resetting of a sequence");
+				
+			}
 			if(trim($SEQUENCE) == "") {
 				if($DEBUG) {
 					logEntry("Reset of Sequence requested, but no sequence/song sent in");
 					exit(0);
 				}
 			}
-			
 			$sqlGetSequencesForSite = "SELECT * FROM sequences WHERE site_ID = ".$SITE_ID . " AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 			$result = $conn->query($sqlGetSequencesForSite);
+			
+			if($DEBUG) {
+				logEntry("Get the sequences for a site: ".$sqlGetSequencesForSite);
+			}
 			
 			if($result !== false) {
 				
 				while($row = $result->fetch_assoc()) {
-					
+					if($DEBUG) {
+						logEntry("SEQUENCE Comparision: row: ".urldecode(trim($row['fseq'])). " looking for: ".$SEQUENCE);
+					}
 					//search through the sequences to find the one taht was sent in
 					if(strtoupper(urldecode(trim($row['fseq']))) == strtoupper(trim($SEQUENCE))) {
 						
+						if($DEBUG) {
+							logEntry("FOUND SEQUENCE: FSEQ: ".$SEQUENCE);
+						}
 						//Sequence_ID =
 						$SEQUENCE_ID = $row['sequence_ID'];
+						
+						//delete all the votes for this sequence iD in the table of $VOTES
+						
 						resetVotesForSequenceID($conn, $SEQUENCE_ID);
 						break;
 					}
@@ -212,6 +227,7 @@ if($SITE_ENABLED_STATUS) {
 				}
 				
 			}
+			
 			
 			break;
 			
