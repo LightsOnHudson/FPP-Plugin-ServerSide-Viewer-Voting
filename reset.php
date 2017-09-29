@@ -219,7 +219,9 @@ if($SITE_ENABLED_STATUS) {
 			break;
 			
 		default:
-			
+			if($DEBUG) {
+				logEntry("NO RESET CMD SENT");
+			}
 			break;
 		
 	}
