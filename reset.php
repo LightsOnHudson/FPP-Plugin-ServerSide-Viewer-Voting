@@ -66,9 +66,9 @@ if(!empty($_POST)) {
 				$CLIENT_TOKEN = $_POST['API_TOKEN'];
 				$RESET_CMD = $_POST['CMD'];
 				if(isset($_POST['SEQUENCE'])) {
-					$SEQUENCE = $_POST['SEQUENCE'];
+					$SEQUENCE = urldecode($_POST['SEQUENCE']);
 				} elseif(isset($_POST['SONG'])) {
-					$SEQUENCE = $_POST['SONG'];
+					$SEQUENCE = urldecode($_POST['SONG']);
 				}
 				
 				$data = json_decode($_POST, TRUE);
@@ -86,9 +86,9 @@ if(!empty($_POST)) {
 				$RESET_CMD = $_GET['CMD'];
 				
 				if(isset($_GET['SEQUENCE'])) {
-					$SEQUENCE = $_GET['SEQUENCE'];
+					$SEQUENCE = urldecode($_GET['SEQUENCE']);
 				} elseif(isset($_GET['SONG'])) {
-					$SEQUENCE = $_GET['SONG'];
+					$SEQUENCE = urldecode($_GET['SONG']);
 				} 
 			}
 		
