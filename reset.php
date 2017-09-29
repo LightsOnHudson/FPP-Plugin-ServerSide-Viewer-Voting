@@ -238,6 +238,10 @@ if($SITE_ENABLED_STATUS) {
 			$sqlGetSequencesForSite = "SELECT * FROM sequences WHERE site_ID = ".$SITE_ID . " AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 			$result = $conn->query($sqlGetSequencesForSite);
 			
+			if($DEBUG) {
+				logEntry("RESET ALL command: ".$sqlGetSequencesForSite);
+			}
+			
 			if($result !== false) {
 				
 				while($row = $result->fetch_assoc()) {
@@ -246,6 +250,10 @@ if($SITE_ENABLED_STATUS) {
 						
 						//Sequence_ID =
 						$SEQUENCE_ID = $row['sequence_ID'];
+						
+						if($DEBUG) {
+							logEntry("Resetting votes for sequence id: ".$SEQUENCE_ID);
+						}
 						resetVotesForSequenceID($conn, $SEQUENCE_ID);
 						break;
 					
