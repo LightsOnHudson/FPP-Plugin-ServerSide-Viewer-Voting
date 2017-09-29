@@ -255,7 +255,7 @@ if($SITE_ENABLED_STATUS) {
 							logEntry("Resetting votes for sequence id: ".$SEQUENCE_ID);
 						}
 						resetVotesForSequenceID($conn, $SEQUENCE_ID);
-						break;
+						
 					
 					
 				}
