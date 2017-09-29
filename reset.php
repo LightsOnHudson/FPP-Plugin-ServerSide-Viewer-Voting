@@ -159,7 +159,9 @@ if($SITE_ENABLED_STATUS) {
 			if($result !== false) {
 				
 				while($row = $result->fetch_assoc()) {
-					
+					if($DEBUG) {
+						logEntry("SEQUENCE Comparision: row: ".$row['fseq']. " looking for: ".$SEQUENCE);
+					}
 					//search through the sequences to find the one taht was sent in
 					if(strtoupper(urldecode(trim($row['fseq']))) == strtoupper(trim($SEQUENCE))) {
 						
