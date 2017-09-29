@@ -152,6 +152,10 @@ if($SITE_ENABLED_STATUS) {
 			$sqlGetSequencesForSite = "SELECT * FROM sequences WHERE site_ID = ".$SITE_ID . " AND status_ID = ".$SEQUENCE_ENABLED_STATUS;
 			$result = $conn->query($sqlGetSequencesForSite);
 			
+			if($DEBUG) {
+				logEntry("Get the sequences for a site: ".$sqlGetSequencesForSite);
+			}
+			
 			if($result !== false) {
 				
 				while($row = $result->fetch_assoc()) {
@@ -159,6 +163,9 @@ if($SITE_ENABLED_STATUS) {
 					//search through the sequences to find the one taht was sent in
 					if(strtoupper(urldecode(trim($row['fseq']))) == strtoupper(trim($SEQUENCE))) {
 						
+						if($DEBUG) {
+							logEntry("FOUND SEQUENCE: FSEQ: ".$SEQUENCE);
+						}
 						//Sequence_ID = 
 						$SEQUENCE_ID = $row['sequence_ID'];
 						
