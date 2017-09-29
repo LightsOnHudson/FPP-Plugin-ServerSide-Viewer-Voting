@@ -69,8 +69,6 @@ if(!empty($_POST)) {
 					$SEQUENCE = $_POST['SEQUENCE'];
 				} elseif(isset($_POST['SONG'])) {
 					$SEQUENCE = $_POST['SONG'];
-				} else {
-					$SEQUENCE="ALL";
 				}
 				
 				$data = json_decode($_POST, TRUE);
@@ -91,9 +89,7 @@ if(!empty($_POST)) {
 					$SEQUENCE = $_GET['SEQUENCE'];
 				} elseif(isset($_GET['SONG'])) {
 					$SEQUENCE = $_GET['SONG'];
-				} else {
-					$SEQUENCE="ALL";
-				}
+				} 
 			}
 		
 	}
